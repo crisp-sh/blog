@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { NextApiRequest, NextApiResponse } from 'next';
 import querystring from 'querystring';
+import { NextRequest, NextResponse } from 'next/server';
 
 const {
   SPOTIFY_CLIENT_ID: client_id,
@@ -46,51 +46,45 @@ const getAccessToken = async () => {
   return res.data.access_token;
 };
 
-export const getNowPlaying = async () => {
+export async function GET(req: NextRequest) {
   const access_token = await getAccessToken();
 
-  return axios.get<SpotifyData>(NOW_PLAYING_ENDPOINT, {
+  const response = await axios.get<SpotifyData>(NOW_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
   });
-};
 
-export default async function spotify(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method === 'GET') {
-    const response = await getNowPlaying();
-
-    if (
-      response.status === 204 ||
-      response.status > 400 ||
-      response.data.currently_playing_type !== 'track'
-    ) {
-      //? s-maxage=180 because song usually lasts 3 minutes
-      res.setHeader(
-        'Cache-Control',
-        'public, s-maxage=180, stale-while-revalidate=90'
-      );
-      return res.status(200).json({ isPlaying: false });
-    }
-
-    const data = {
-      isPlaying: response.data.is_playing,
-      title: response.data.item.name,
-      album: response.data.item.album.name,
-      artist: response.data.item.album.artists
-        .map((artist) => artist.name)
-        .join(', '),
-      albumImageUrl: response.data.item.album.images[0].url,
-      songUrl: response.data.item.external_urls.spotify,
-    };
-
-    res.setHeader(
-      'Cache-Control',
-      'public, s-maxage=180, stale-while-revalidate=90'
-    );
-    return res.status(200).json(data);
+  if (
+    response.status === 204 ||
+    response.status > 400 ||
+    response.data.currently_playing_type !== 'track'
+  ) {
+    return new NextResponse(JSON.stringify({ isPlaying: false }), {
+      status: 200,
+      headers: {
+        'Cache-Control': 'public, s-maxage=180, stale-while-revalidate=90',
+        'Content-Type': 'application/json',
+      },
+    });
   }
+
+  const data = {
+    isPlaying: response.data.is_playing,
+    title: response.data.item.name,
+    album: response.data.item.album.name,
+    artist: response.data.item.album.artists
+      .map((artist) => artist.name)
+      .join(', '),
+    albumImageUrl: response.data.item.album.images[0].url,
+    songUrl: response.data.item.external_urls.spotify,
+  };
+
+  return new NextResponse(JSON.stringify(data), {
+    status: 200,
+    headers: {
+      'Cache-Control': 'public, s-maxage=180, stale-while-revalidate=90',
+      'Content-Type': 'application/json',
+    },
+  });
 }
