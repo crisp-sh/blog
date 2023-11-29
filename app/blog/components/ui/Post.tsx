@@ -19,7 +19,7 @@ export default function Post({ post, mousePosition }: PostProps) {
   const publishDate = new Date(publishedAt);
   const showNewBadge =
     Math.abs(new Date(publishDate).getTime() - new Date().getTime()) /
-      (24 * 60 * 60 * 1000) <
+    (24 * 60 * 60 * 1000) <
     30;
   const imageHeight = 150;
   const imageWidth = 300;
@@ -27,35 +27,37 @@ export default function Post({ post, mousePosition }: PostProps) {
 
   return (
     <li className="py-3 group transition-opacity">
-      <div className="transition-opacity">
-        {image && mousePosition && (
-          <motion.div
-            animate={{
-              top: mousePosition.y - imageHeight - imageOffset,
-              left: mousePosition.x - imageWidth / 2,
-            }}
-            initial={false}
-            transition={{ ease: "easeOut" }}
-            style={{ width: imageWidth, height: imageHeight }}
-            className="absolute z-10 hidden overflow-hidden rounded shadow-sm pointer-events-none sm:group-hover:block bg-primary"
-          >
-            <Image
-              src={image}
-              alt={title}
-              width={imageWidth}
-              height={imageHeight}
-            />
-          </motion.div>
-        )}
-        <div className="flex justify-between gap-6 items-center">
-          <Section heading={formatDate(publishedAt)}>
-            <Link href={`/blog/${slug}`} className="font-medium leading-tight">{title}</Link>
-          </Section>
-          <div className="md:hidden aspect-square min-w-24 w-24 h-24 relative drop-shadow-sm">
-            <Image src={image} alt={title} fill className="object-cover rounded"/>
+      <Link href={`/blog/${slug}`}>
+        <div className="transition-opacity">
+          {image && mousePosition && (
+            <motion.div
+              animate={{
+                top: mousePosition.y - imageHeight - imageOffset,
+                left: mousePosition.x - imageWidth / 2,
+              }}
+              initial={false}
+              transition={{ ease: "easeOut" }}
+              style={{ width: imageWidth, height: imageHeight }}
+              className="absolute z-10 hidden overflow-hidden rounded shadow-sm pointer-events-none sm:group-hover:block bg-primary"
+            >
+              <Image
+                src={image}
+                alt={title}
+                width={imageWidth}
+                height={imageHeight}
+              />
+            </motion.div>
+          )}
+          <div className="flex justify-between gap-6 items-center">
+            <Section heading={formatDate(publishedAt)}>
+              <Link href={`/blog/${slug}`} className="font-medium leading-tight">{title}</Link>
+            </Section>
+            <div className="md:hidden aspect-square min-w-24 w-24 h-24 relative drop-shadow-sm">
+              <Image src={image} alt={title} fill className="object-cover rounded" />
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </li>
   );
 }
