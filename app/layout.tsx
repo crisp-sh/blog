@@ -1,4 +1,5 @@
-// Adjust the imports as necessary
+/* eslint-disable @next/next/no-sync-scripts */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
@@ -30,6 +31,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </ThemeProvider>
         <Analytics />
+        // meticulous recorder script
+        <script data-project-id="pX9lSO92h5Tzp5h7WwrcH8vAsVygzVXPMzC0oQDI" src="https://snippet.meticulous.ai/v1/meticulous.js"/>
       </body>
     </html>
   );
