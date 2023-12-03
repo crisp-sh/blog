@@ -33,7 +33,7 @@ export default async function NowPlaying() {
   return (
     <Halo strength={5}>
       <a
-        className="animate-in flex bg-tertiary overflow-clip p-4 gap-4 md:gap-6 md:p-6 items-center no-underline border border-primary w-full relative shadow-inner shadow shadow-2xl"
+        className="animate-in flex bg-tertiary overflow-clip p-4 gap-4 md:gap-6 md:p-6 items-center no-underline border border-primary w-full relative shadow-inner"
         href={track.songUrl}
         target="_blank"
         rel="noopener noreferrer"
