@@ -31,41 +31,41 @@ export default async function NowPlaying() {
   };
 
   return (
-      <Halo strength={7}>
-        <a
-          className="animate-in flex bg-tertiary overflow-clip p-4 gap-4 md:gap-6 md:p-6 items-center no-underline border border-primary w-full relative"
-          href={track.songUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {/* Spotify Icon */}
-          <div className="absolute top-1 right-1 bg-transparent	p-1 m-5">
-            <FaSpotify alt="Spotify" className="h-5 w-5 shadow-xl" />
-          </div>
-          <div className="prose">
-            <Image
-              width={200}
-              height={200}
-              src={track.coverArt}
-              alt={"Album image for the song " + track.title + " by " + track.artist}
-              className="animate-in aspect-square shadow-xl"
-            />
-          </div>
+    <Halo strength={5}>
+      <a
+        className="animate-in flex bg-tertiary overflow-clip p-4 gap-4 md:gap-6 md:p-6 items-center no-underline border border-primary w-full relative shadow-inner shadow shadow-2xl"
+        href={track.songUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {/* Spotify Icon */}
+        <div className="absolute top-1 right-1 bg-transparent	p-1 m-5">
+          <FaSpotify alt="Spotify" className="h-5 w-5 shadow-xl" />
+        </div>
+        <div className="prose">
+          <Image
+            width={200}
+            height={200}
+            src={track.coverArt}
+            alt={"Album image for the song " + track.title + " by " + track.artist}
+            className="animate-in aspect-square shadow-xl"
+          />
+        </div>
 
-          <div className="w-full flex flex-col gap-1 leading-tight">
-            <p className="animate-in m-0 text-sm text-tertiary flex items-center gap-0.5">
-              Listening to
+        <div className="w-full flex flex-col gap-1 leading-tight">
+          <p className="animate-in m-0 text-sm text-tertiary flex items-center gap-0.5">
+            Listening to
+          </p>
+          <p className="animate-in text-base line-clamp-3 text-primary font-medium m-0 leading-tight">
+            {track.title}
+          </p>
+          <div className="md:block">
+            <p className="animate-in line-clamp-2 m-0 text-sm text-secondary">
+              {track.artist}
             </p>
-            <p className="animate-in text-base line-clamp-3 text-primary font-medium m-0 leading-tight">
-              {track.title}
-            </p>
-            <div className="md:block">
-              <p className="animate-in line-clamp-2 m-0 text-sm text-secondary">
-                {track.artist}
-              </p>
-            </div>
           </div>
-        </a>
-      </Halo>
+        </div>
+      </a>
+    </Halo>
   );
 }
