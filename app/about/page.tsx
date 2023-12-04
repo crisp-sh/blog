@@ -130,30 +130,30 @@ export default function About() {
 const workplaces = [
   {
     title: "Full Stack Engineer",
-    company: "Hines",
+    company: "Me",
     time: "2022 -",
     imageSrc: hinesLogo,
-    link: "https://hines.com",
+    // link: "https://hines.com",
   },
   {
     title: "Software Engineer",
-    company: "PeriShip",
+    company: "Myself",
     time: "2021 - 2022",
     imageSrc: perishipLogo,
-    link: "https://peripharma.com/",
+    // link: "https://peripharma.com/",
   },
   {
     title: "Python Developer",
-    company: "CAMS",
+    company: "&",
     time: "2019 - 2020",
     imageSrc: camsLogo,
-    link: "https://camstex.com",
+    // link: "https://camstex.com",
   },
   {
     title: "Coding Camp Instructor",
-    company: "University of Houston",
+    company: "I",
     time: "2019",
     imageSrc: uhdLogo,
-    link: "https://www.uhd.edu/",
+    // link: "https://www.uhd.edu/",
   },
 ];
