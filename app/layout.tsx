@@ -31,8 +31,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </ThemeProvider>
         <Analytics />
-        {/* meticulous recorder script */}
-        <script data-project-id="pX9lSO92h5Tzp5h7WwrcH8vAsVygzVXPMzC0oQDI" src="https://snippet.meticulous.ai/v1/meticulous.js"/>
       </body>
     </html>
   );
