@@ -12,6 +12,8 @@ import Navigation from "@/components/Navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Home | Brian Ruiz",
   description: "I am a full-stack software engineer who basically just enjoys creating things.",
