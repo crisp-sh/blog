@@ -12,11 +12,9 @@ import Navigation from "@/components/Navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
-  title: "Home | Brian Ruiz",
-  description: "I am a full-stack software engineer who basically just enjoys creating things.",
+  title: "Home | SH Crisp",
+  description: "People, places & technology.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -25,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={clsx(inter.className, "antialiased bg-primary text-primary")}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           
-          <div className="flex flex-col min-h-screen justify-center items-center">
+          <div className="flex flex-col min-h-screen pt-[50px] justify-center items-center">
             <div className="w-full max-w-4xl p-6 md:p-10">
               {children}
             </div>
