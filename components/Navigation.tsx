@@ -50,7 +50,7 @@ export default function Navigation() {
           leaveTo="opacity-0 translate-y-1"
         >
           <Popover.Panel
-            className="absolute z-[11] top-12 right-[-17px] p-2 overflow-auto text-base origin-bottom-right w-[156px] bg-secondary dark:bg-secondary focus:outline-none sm:text-sm border border-primary border-b-0"
+            className="absolute z-[11] top-12 right-[-17px] p-2 overflow-auto text-base origin-bottom-right w-[156px] bg-secondary dark:bg-secondary focus:outline-none sm:text-sm border border-primary"
             style={
               theme === "terminal" 
               ? { background: "#33255b" } 
@@ -66,7 +66,7 @@ export default function Navigation() {
                   className={clsx(
                     "px-4 py-2 hover:text-secondary transition-colors",
                     pathname === link.href
-                      ? "font-bold text-secondary"
+                      ? "text-secondary"
                       : "font-normal"
                   )}
                 >
