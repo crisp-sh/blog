@@ -12,6 +12,8 @@ import Navigation from "@/components/Navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const dynamic = 'auto';
+
 export const metadata: Metadata = {
   title: "Home | SH Crisp",
   description: "People, places & technology.",
