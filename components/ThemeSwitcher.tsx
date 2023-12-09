@@ -56,7 +56,7 @@ export default function ThemeSwitcher() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ type: "spring", bounce: 0.3, duration: 0.3 }}
-                    className="absolute bottom-0 right-0 translate-y-full translate-x-0 p-2 mt-2 overflow-auto text-base max-h-60 w-42  bg-white dark:bg-black focus:outline-none sm:text-sm capitalize border border-primary shadow-xl"
+                    className="absolute z-[11] top-10 right-[-107px] translate-y-full translate-x-0 p-2 mt-2 overflow-auto text-base  w-[156px] bg-white dark:bg-black focus:outline-none sm:text-sm capitalize border border-primary shadow-xl"
                     style={
                       theme === "terminal" 
                       ? { background: "#33255b" } 
@@ -86,7 +86,7 @@ export default function ThemeSwitcher() {
                                 selected ? "font-medium" : "font-normal"
                               }`}
                             >
-                              {theme == "system" ? "Automatic" : theme}
+                              {theme == "system" ? "System" : theme}
                             </span>
                             {selected ? (
                               <span className="absolute inset-y-0 left-0 flex items-center pl-3 dark:text-neutral-50">
