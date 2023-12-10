@@ -56,7 +56,7 @@ export default function ThemeSwitcher() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ type: "spring", bounce: 0.3, duration: 0.3 }}
-                    className="absolute z-[11] top-10 right-[-107px] translate-y-full translate-x-0 p-2 mt-2 overflow-auto text-base  w-[156px] bg-white dark:bg-black focus:outline-none sm:text-sm capitalize border border-primary shadow-xl"
+                    className="absolute z-[11] top-10 right-[-107px] translate-y-full translate-x-0 p-2 mt-2 overflow-auto text-base  w-[156px] focus:outline-none sm:text-sm capitalize border border-primary"
                     style={
                       theme === "terminal" 
                       ? { background: "#33255b" } 

@@ -1,30 +1,57 @@
+"use client"
+import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
-import useSWR from "swr";
-import { useTheme } from "next-themes";
-import clsx from "clsx";
-
-import { SlSocialSpotify } from "react-icons/sl";
-// import { ArrowTrendingUpIcon } from "@heroicons/react/20/solid";
-import { SpotifyLogo } from "@phosphor-icons/react"
-
-import fetcher from "@/lib/fetcher";
-import getLastPlayed from "@/lib/spotify";
 import { FaSpotify } from "react-icons/fa";
 
 import Halo from "./ui/Halo";
-import getNowPlaying from "@/lib/spotify";
+// import getLastPlayed from "@/lib/spotify";
 
-// eslint-disable-next-line @next/next/no-async-client-component
-export default async function NowPlaying() {
-  const { data: song } = await getLastPlayed();
+// Define a type for your song data, adjust as per your actual data structure
+type SongData = {
+  is_playing: boolean;
+  item?: SpotifyTrack;
+  items?: { track: SpotifyTrack }[];
+};
 
-  const recent = song.is_playing ? song.item : song.items[0].track;
+type SpotifyTrack = {
+  name: string;
+  artists: { name: string }[];
+  external_urls: { spotify: string };
+  album: {
+    images: { url: string }[];
+  };
+  preview_url: string;
+};
+
+export default function NowPlaying() {
+  const [song, setSong] = useState<SongData | null>(null);
+
+  useEffect(() => {
+    async function fetchSong() {
+      const response = await getLastPlayed();
+      console.log(response);
+      if (response?.data) {
+        setSong(response.data);
+      }
+    }
+
+    fetchSong();
+  }, []);
+
+  if (!song) {
+    return <div>Loading...</div>;
+  }
+
+  const recent = song.is_playing && song.item ? song.item : song.items && song.items.length > 0 ? song.items[0].track : null;
+
+  if (!recent) {
+    return <div>No recent tracks found.</div>;
+  }
+
   const track = {
     title: recent.name,
-    artist: recent.artists
-      .map((_artist: { name: string }) => _artist.name)
-      .shift(),
+    artist: recent.artists.map((_artist) => _artist.name).join(", "),
     songUrl: recent.external_urls.spotify,
     coverArt: recent.album.images[0].url,
     previewUrl: recent.preview_url,
@@ -32,7 +59,7 @@ export default async function NowPlaying() {
 
   return (
     <Halo strength={5}>
-      <a
+      <Link
         className="animate-in flex bg-tertiary overflow-clip p-4 gap-4 md:gap-6 md:p-6 items-center no-underline border border-primary w-full relative shadow-inner"
         href={track.songUrl}
         target="_blank"
@@ -65,7 +92,7 @@ export default async function NowPlaying() {
             </p>
           </div>
         </div>
-      </a>
+      </Link>
     </Halo>
   );
 }

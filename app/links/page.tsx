@@ -60,7 +60,7 @@ export default function Links() {
             </li>
           ))}
         </ul>
-        <NowPlaying />
+        {/* <NowPlaying /> */}
       </div>
     </>
   );
