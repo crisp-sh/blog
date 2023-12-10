@@ -3,15 +3,13 @@ import Link from "@/components/ui/Link";
 import { allPosts } from ".contentlayer/generated";
 
 import PostList from "./blog/components/ui/PostList";
-import NowPlaying from "@/components/NowPlaying"
 import Stats from "@/components/Stats";
-// import * as HoverCard from '@radix-ui/react-hover-card';
 
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
-import getLastPlayed from "@/lib/spotify";
 import Avatar from "@/public/avatar.png";
 
 import Filter from "bad-words";
+import React from "react";
 
 export default async function Home() {
   const posts = allPosts
@@ -23,7 +21,7 @@ export default async function Home() {
     .filter((_, i) => i < 3);
 
   return (
-    <div className="flex flex-col gap-16 md:gap-24">
+    <div className="flex flex-col gap-8 md:gap-16">
       <div className="flex animate-in flex-col gap-8">
         <div>
           <h1 className="animate-in text-3xl font-bold tracking-tight text-primary">
@@ -54,7 +52,7 @@ export default async function Home() {
           className="max-w-lg animate-in text-primary"
           style={{ "--index": 2 } as React.CSSProperties}
         >
-          Hi, I&apos;m Sellers, a 22 year-old software engineer, turned political scientist, turned 
+          Hi, I&apos;m Sellers, a 22 year-old software engineer, turned political scientist, turned
           entrepreneur, who loves building cool things with cool tools.
         </p>
         <ul
@@ -80,17 +78,22 @@ export default async function Home() {
             </Link>
           </li>
         </ul>
-        <div className="animate-in lg:w-4/5 md:w-4/5 sm:w-full mt-12 transition-opacity block">
+        {/* <div className="animate-in lg:w-4/5 md:w-4/5 sm:w-full mt-12 transition-opacity block">
         
           <NowPlaying />
         
-        </div>
+        </div> */}
       </div>
+
+      <div className="" style={{ "--index": 3 } as React.CSSProperties}>
+        <hr className="h-px border-0 bg-tertiary" />
+      </div>
+
       <div
-        className="flex animate-in flex-col gap-8"
-        style={{ "--index": 3 } as React.CSSProperties}
+        className="flex animate-in flex-col gap-6"
+        style={{ "--index": 4 } as React.CSSProperties}
       >
-        <h2 className="text-secondary">Latest Posts</h2>
+        <h2 className="text-tertiary font-normal">Recent Posts</h2>
         <PostList posts={posts} />
         <Link
           href="/blog"

@@ -42,18 +42,21 @@ export default function About() {
         <Section heading="About" headingAlignment="left">
           <div className="flex flex-col gap-6">
             <p>
-              As a Commander (ENTJ-A)
-            </p>
-            <p>
-              In addition to coding, I also make{" "}
+              I&apos;m currently a senior at the{" "}
               <Link
                 className="underline"
-                href="https://www.youtube.com/channel/@brianruizy"
+                href="https://spia.uga.edu/"
               >
-                YouTube
+              University of Georgia
+              </Link>, studying topics like cyber security, human rights, and climate change. 
+              Previously, I attended{" "}
+              <Link
+                className="underline"
+                href="https://www.springboard.com/courses/software-engineering-career-track/"
+              >
+              Springboard&apos;s
               </Link>{" "}
-              videos, where I focus on tech gear, creative vlogs, and a bit of
-              personal development.
+              software engineering bootcamp.
             </p>
             <p>
               When I&apos;m not at my desk I am probably lifting weights,

@@ -4,22 +4,23 @@ import useSWR from "swr";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 
-import { FaYoutube, FaGithub } from "react-icons/fa";
+import { FaYoutube, FaGithub, FaSpotify } from "react-icons/fa";
 import { ArrowTrendingUpIcon } from "@heroicons/react/20/solid";
 
 import FlipNumber from "@/components/FlipNumber";
 import fetcher from "@/lib/fetcher";
-import { addCommas, getThemeFont } from "@/lib/utils";
+import { addCommas, getThemeFont, truncateString } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
-export function YouTube() {
-  const { data: youtubeData, error: youtubeDataError } = useSWR(
-    `/api/youtube`,
-    fetcher
-  );
-
-  if (youtubeDataError) return <div>failed to load</div>;
-  return addCommas(youtubeData?.subscribers);
-}
+type NowPlayingSong = {
+  isPlaying: boolean;
+  title: string;
+  album: string;
+  albumImageUrl: string;
+  artist: string;
+  songUrl: string;
+  name: string;
+};
 
 export function GitHub() {
   const { data: githubData, error: githubDataError } = useSWR(
@@ -32,6 +33,23 @@ export function GitHub() {
 }
 
 export default function Stats() {
+  const [nowPlaying, setNowPlaying] = useState<NowPlayingSong | null>(null);
+
+  useEffect(() => {
+    async function fetchNowPlaying() {
+      const res = await fetch('/api/spotify');
+      if (!res.ok) {
+        console.error('Failed to fetch now playing track');
+        return;
+      }
+
+      const data = await res.json();
+      setNowPlaying(data);
+    }
+
+    fetchNowPlaying();
+  }, []);
+
   const { theme } = useTheme();
   const username = "sellerscrisp";
 
@@ -43,22 +61,28 @@ export default function Stats() {
     `/api/prisma/hitsTotal`,
     fetcher
   );
-  const { data: youtubeData, error: youtubeDataError } = useSWR(
-    `/api/youtube`,
-    fetcher
-  );
 
   return (
-    <ul
-      className={clsx(getThemeFont(theme)
-        // "space-y-2 animated-list",
-        // theme === "terminal" ? "font-mono tracking-tight" :
-        //   theme === "dark" ? "font-dark" :
-        //     theme === "light" ? "font-light" :
-        //       theme === "orchid" ? "font-mono tracking-tight" : ""
-      )}
-    >
-      <li className="transition-opacity">
+    <ul className={clsx("animated-list", getThemeFont(theme))}>
+      <li className="transition-opacity mb-1">
+        <Link target="_blank" className="flex gap-3 items-center no-underline" href={nowPlaying?.songUrl || "#"}>
+          <FaSpotify className="text-xl" />
+          <div>
+            {nowPlaying?.isPlaying ? (
+              <div>
+                <span>
+                  {truncateString(nowPlaying.title, 24)}
+                </span>
+                <span className="text-tertiary"> by </span>
+                <span>{truncateString(nowPlaying.artist, 100)}</span>
+              </div>
+            ) : (
+              <span>Not Playing</span>
+            )}
+          </div>
+        </Link>
+      </li>
+      <li className="transition-opacity mb-1">
         <Link
           className="flex gap-3 items-center no-underline"
           href={"https://github.com/sellerscrisp"}
@@ -68,32 +92,18 @@ export default function Stats() {
             <FlipNumber>
               {githubData ? addCommas(githubData?.repoCount) : "000"}
             </FlipNumber>
-            <span> GitHub Repositories</span>
+            <span className="text-secondary"> repositories</span>
           </div>
         </Link>
       </li>
-      <li className="transition-opacity">
+      <li className="transition-opacity mb-1">
         <Link className="flex gap-3 items-center" href="/blog">
           <ArrowTrendingUpIcon className="w-5 h-5" />
           <div>
             <FlipNumber>
               {postsData ? addCommas(postsData?.total) : "0,000"}
             </FlipNumber>
-            <span> Total Blog Views</span>
-          </div>
-        </Link>
-      </li>
-      <li className="transition-opacity">
-        <Link
-          className="flex gap-3 items-center no-underline"
-          href={"https://www.youtube.com/@" + username}
-        >
-          <FaYoutube className="text-xl" />
-          <div>
-            <FlipNumber>
-              {youtubeData ? addCommas(youtubeData?.subscribers) : "00,000"}
-            </FlipNumber>
-            <span> YouTube Subscribers</span>
+            <span className="text-secondary"> website hits</span>
           </div>
         </Link>
       </li>

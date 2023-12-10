@@ -76,7 +76,7 @@ export default function Project({ params }: { params: any }) {
             Need more project details, or interested in working together? Reach
             out to me directly at{" "}
             <a href="mailto:s@crisp.sh" className="text-primary underline">
-              brian@b-r.io
+              s [at] crisp.sh
             </a>
             . I&apos;d be happy to connect!{" "}
           </p>
