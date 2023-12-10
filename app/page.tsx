@@ -78,11 +78,6 @@ export default async function Home() {
             </Link>
           </li>
         </ul>
-        {/* <div className="animate-in lg:w-4/5 md:w-4/5 sm:w-full mt-12 transition-opacity block">
-        
-          <NowPlaying />
-        
-        </div> */}
       </div>
 
       <div className="" style={{ "--index": 3 } as React.CSSProperties}>

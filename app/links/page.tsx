@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "@/components/ui/Link";
 import ConnectLinks from "@/components/ConnectLinks";
 import avatar from "public/avatar.png";
-import NowPlaying from "@/components/NowPlaying";
 
 export default function Links() {
   return (
