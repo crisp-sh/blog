@@ -14,14 +14,21 @@ export function cn(...inputs: ClassValue[]) {
 export function getThemeFont(theme: string | undefined): string {  
   switch (theme) {
     case "light":
-      return "font-light"; // Replace with actual class names
+      return "font-sans"; // Replace with actual class names
     case "dark":
-      return "font-dark"; // Replace with actual class names
+      return "font-sans"; // Replace with actual class names
     case "terminal":
       return "font-mono tracking-tight";
     case "orchid":
-      return "font-serif tracking-tight"; // Replace with actual class names
+      return "font-serif"; // Replace with actual class names
     default:
-      return ""; // Default case if no theme matches
+      return "font-serif"; // Default case if no theme matches
   }
+}
+
+export function truncateString(str: string, num: any) {
+  if (str.length <= num) {
+    return str;
+  }
+  return str.slice(0, num) + '...';
 }
