@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           
           <div className="flex flex-col min-h-screen items-center">
-            <div className="w-full max-w-3xl p-6 md:p-10">
+            <div className="w-full max-w-3xl p-6 md:p-10 lg:top-[50px] md:top-[50px] sm:top-[50px]">
               {children}
             </div>
             <Navigation />
