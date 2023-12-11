@@ -25,10 +25,3 @@ export function getThemeFont(theme: string | undefined): string {
       return "font-serif"; // Default case if no theme matches
   }
 }
-
-export function truncateString(str: string, num: any) {
-  if (str.length <= num) {
-    return str;
-  }
-  return str.slice(0, num) + '...';
-}
