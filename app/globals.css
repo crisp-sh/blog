@@ -7,6 +7,11 @@
 @import "@radix-ui/colors/gray-dark.css";
 @import "@radix-ui/colors/gray-dark-alpha.css";
 
+@import "@radix-ui/colors/grass.css";
+@import "@radix-ui/colors/grass-alpha.css";
+@import "@radix-ui/colors/grass-dark.css";
+@import "@radix-ui/colors/grass-dark-alpha.css";
+
 @import "@radix-ui/colors/jade.css";
 @import "@radix-ui/colors/jade-alpha.css";
 @import "@radix-ui/colors/jade-dark.css";
@@ -55,37 +60,37 @@
   }
 
   .orchid {
-    --gray-a4: #fc1ec43f;
-    --gray-1: #191117;
-    --gray-2: #21121d;
-    --gray-3: #37172f;
-    --gray-4: #4b143d;
-    --gray-5: #591c47;
-    --gray-6: #692955;
-    --gray-7: #833869;
-    --gray-8: #a84885;
-    --gray-9: #fdd1ea;
-    --gray-10: #de51a8;
-    --gray-11: #ff8dcc;
-    --gray-12: #fdd1ea;
+    --gray-a4: var(--pink-a4);
+    --gray-1: var(--pink-1);
+    --gray-2: var(--pink-2);
+    --gray-3: var(--pink-3);
+    --gray-4: var(--pink-4);
+    --gray-5: var(--pink-5);
+    --gray-6: var(--pink-6);
+    --gray-7: var(--pink-7);
+    --gray-8: var(--pink-8);
+    --gray-9: var(--pink-9);
+    --gray-10: var(--pink-10);
+    --gray-11: var(--pink-11);
+    --gray-12: var(--pink-12);
 
-    --gray-a1: #f412bc09;
-    --gray-a2: #f420bb12;
-    --gray-a3: #fe37cc29;
-    --gray-a4: #fc1ec43f;
-    --gray-a5: #fd35c24e;
-    --gray-a6: #fd51c75f;
-    --gray-a7: #fd62c87b;
-    --gray-a8: #ff68c8a2;
-    --gray-a9: #fe49bcd4;
-    --gray-a10: #ff5cc0dc;
-    --gray-a11: #ff8dcc;
-    --gray-a12: #ffd3ecfd;
+    --gray-a1: var(--pink-a1);
+    --gray-a2: var(--pink-a2);
+    --gray-a3: var(--pink-a3);
+    --gray-a4: var(--pink-a4);
+    --gray-a5: var(--pink-a5);
+    --gray-a6: var(--pink-a6);
+    --gray-a7: var(--pink-a7);
+    --gray-a8: var(--pink-a8);
+    --gray-a9: var(--pink-a9);
+    --gray-a10: var(--pink-a10);
+    --gray-a11: var(--pink-a11);
+    --gray-a12: var(--pink-a12);
   }
 
   .orchid .prose {
     --tw-prose-headings: var(--gray-12);
-    --tw-prose-body: var(--gray-9);
+    --tw-prose-body: var(--gray-12);
     --tw-prose-bold: var(--gray-9);
     --tw-prose-links: var(--gray-9);
     --tw-prose-code: var(--gray-11);
@@ -93,35 +98,33 @@
   }
 
   .terminal {
-    /* using jade colors */
-    --gray-a4: #33255B2d;
-    --gray-1: #14121F;
-    --gray-2: #1B1525;
-    --gray-3: #291F43;
-    --gray-4: #33255B;
-    --gray-5: #3C2E69;
-    --gray-6: #473876;
-    --gray-7: #56468B;
-    --gray-8: #6958AD;
-    --gray-9: #6E56CF;
-    --gray-10: #7D66D9;
-    --gray-11: #BAA7FF;
-    --gray-12: #E2DDFE;
+    /* using grass colors */
+    --gray-a4: #57ff802c;
+    --gray-1: #0e1511;
+    --gray-2: #141a15;
+    --gray-3: #1b2a1e;
+    --gray-4: #1d3a24;
+    --gray-5: #25482d;
+    --gray-6: #2d5736;
+    --gray-7: #366740;
+    --gray-8: #3e7949;
+    --gray-9: #46a758;
+    --gray-10: #53b365;
+    --gray-11: #71d083;
+    --gray-12: #c2f0c2;
 
-    --gray-a1: #5500aa03;
-    --gray-a2: #4900ff07;
-    --gray-a3: #4400ee0f;
-    --gray-a4: #4300ff1b;
-    --gray-a5: #3600ff26;
-    --gray-a6: #3100fb35;
-    --gray-a7: #2d01dd4a;
-    --gray-a8: #2b00d066;
-    --gray-a9: #2400b7a9;
-    --gray-a10: #2300abb2;
-    --gray-a11: #1f0099af;
-    --gray-a12: #0b0043d9;
-
-    --blue-10: #21fec0d6;
+    --gray-a1: #00de1205;
+    --gray-a2: #5ef7780a;
+    --gray-a3: #70fe8c1b;
+    --gray-a4: #57ff802c;
+    --gray-a5: #68ff8b3b;
+    --gray-a6: #71ff8f4b;
+    --gray-a7: #77fd925d;
+    --gray-a8: #77fd9070;
+    --gray-a9: #65ff82a1;
+    --gray-a10: #72ff8dae;
+    --gray-a11: #89ff9fcd;
+    --gray-a12: #ceffceef;
   }
 
   .terminal .prose {
