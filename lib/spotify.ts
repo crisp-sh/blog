@@ -1,62 +1,64 @@
-import querystring from 'querystring';
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET
+const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN
 
-const client_id = process.env.SPOTIFY_CLIENT_ID;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
-
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString(`base64`);
-const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10`;
-const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=3`;
-const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=10`;
-const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+const BASIC = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')
+const NOW_PLAYING_ENDPOINT =
+  'https://api.spotify.com/v1/me/player/currently-playing'
+const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
 
 const getAccessToken = async () => {
+  if (!REFRESH_TOKEN) {
+    throw new Error('No refresh token available');
+  }
+
   const response = await fetch(TOKEN_ENDPOINT, {
-    method: `POST`,
+    method: 'POST',
     headers: {
-      Authorization: `Basic ${basic}`,
-      'Content-Type': `application/x-www-form-urlencoded`,
+      Authorization: `Basic ${BASIC}`,
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: querystring.stringify({
-      grant_type: `refresh_token`,
-      refresh_token,
-    }),
+    body: new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: REFRESH_TOKEN
+    })
   });
 
-  return response.json();
+  const data = await response.json();
+
+  return data.access_token as string;
 };
 
-export const getNowPlaying = async (): Promise<Response> => {
-  const { access_token } = await getAccessToken();
+const getNowPlaying = async () => {
+  const accessToken = await getAccessToken()
 
-  return fetch(NOW_PLAYING_ENDPOINT, {
+  const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
-      Authorization: `Bearer ${access_token}`,
+      Authorization: `Bearer ${accessToken}`
     },
-  });
-};
+    next: {
+      revalidate: 60
+    }
+  })
 
-export const getSpotifyData = async (): Promise<any> => {
-  const { access_token } = await getAccessToken();
+  if (response.status === 204) {
+    return {
+      status: response.status
+    }
+  }
 
-  const responseTracks = await fetch(TOP_TRACKS_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+  try {
+    const song = await response.json()
 
-  const responseArtists = await fetch(TOP_ARTISTS_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+    return {
+      status: response.status,
+      data: song
+    }
+  } catch {
+    return {
+      status: response.status
+    }
+  }
+}
 
-  const responseRecently = await fetch(RECENTLY_PLAYED_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
-
-  return { responseArtists, responseRecently, responseTracks };
-};
+export default getNowPlaying
