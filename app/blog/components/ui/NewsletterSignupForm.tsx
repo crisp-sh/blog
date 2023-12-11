@@ -75,38 +75,36 @@ export default function NewsletterSignupForm() {
   }
 
   return (
-    <Halo strength={5}>
-      <div className="flex flex-col items-center justify-center gap-4 border border-primary bg-tertiary p-6 text-center lg:p-8">
-        <p className="font-medium text-primary">Subscribe to my newsletter</p>
-        <p className="max-w-md text-secondary">
-          Monthly readings on technology, politics,
-          design, productivity, programming, and more.
-        </p>
-        <form
-          className="mt-2 flex  w-full max-w-md flex-col items-center gap-2 md:flex-row"
-          onSubmit={onSubmit}
-        >
-          <div className="w-full">
-            <label htmlFor="email" className="sr-only">
-              Email
-            </label>
-            <input
-              type="email"
-              name={name}
-              id="email"
-              className="block w-full px-4 py-1.5 text-primary border border-primary placeholder:text-tertiary focus:ring-inset focus:ring-indigo-600 bg-primary"
-              placeholder="you@example.com"
-            />
-          </div>
-          <button className="w-full whitespace-nowrap bg-secondary border border-primary px-4 py-1.5 hover:bg-tertiary focus:ring-inset focus:ring-indigo-600 focus-visible:outline focus-visible:outline-2 md:w-fit animate-pulse">
-            {"Sign up"}
-          </button>
-        </form>
-        <p className="text-sm text-tertiary">
-          Join the <FlipNumber>{subscribersData?.subscribers}</FlipNumber> other
-          readers.
-        </p>
-      </div>
-    </Halo>
+    <div className="flex flex-col items-center justify-center gap-4 border border-primary bg-tertiary p-6 text-center lg:p-8">
+      <p className="font-medium text-primary">Subscribe to my newsletter</p>
+      <p className="max-w-md text-secondary">
+        Monthly readings on technology, politics,
+        design, productivity, programming, and more.
+      </p>
+      <form
+        className="mt-2 flex  w-full max-w-md flex-col items-center gap-2 md:flex-row"
+        onSubmit={onSubmit}
+      >
+        <div className="w-full">
+          <label htmlFor="email" className="sr-only">
+            Email
+          </label>
+          <input
+            type="email"
+            name={name}
+            id="email"
+            className="block w-full px-4 py-1.5 text-primary border border-primary placeholder:text-tertiary focus:ring-inset focus:ring-indigo-600 bg-primary"
+            placeholder="you@example.com"
+          />
+        </div>
+        <button className="w-full whitespace-nowrap bg-secondary border border-primary px-4 py-1.5 hover:bg-tertiary focus:ring-inset focus:ring-indigo-600 focus-visible:outline focus-visible:outline-2 md:w-fit">
+          {"Sign up"}
+        </button>
+      </form>
+      <p className="text-sm text-tertiary">
+        Join the <FlipNumber>{subscribersData?.subscribers}</FlipNumber> other
+        readers.
+      </p>
+    </div>
   );
 }
