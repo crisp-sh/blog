@@ -11,17 +11,17 @@ import { Popover, Transition } from "@headlessui/react";
 import clsx from "clsx";
 
 const links = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
+  { label: "Home", href: "/", index: 1 },
+  { label: "About", href: "/about", index: 2 },
+  { label: "Blog", href: "/blog", index: 3 },
   // { label: "Gear", href: "/gear" },
-  { label: "Projects", href: "/projects" },
+  { label: "Projects", href: "/projects", index: 4 },
 ];
 
 export default function Navigation() {
   const pathname = `/${usePathname().split("/")[1]}`; // active paths on dynamic subpages
   const { theme } = useTheme();
-  
+
   return (
     <aside className="z-[10] fixed top-0 right-0 bg-secondary p-4 flex items-center border border-primary">
       <div className="mr-4">
@@ -50,21 +50,23 @@ export default function Navigation() {
           leaveTo="opacity-0 translate-y-1"
         >
           <Popover.Panel
-            className="absolute z-[11] top-12 right-[-16.5px] p-4 overflow-auto origin-top w-[156px] bg-secondary focus:outline-none sm:text-sm border text-left pl-5 border-primary"
-            style={
-              theme === "terminal" 
-              ? { background: "bg-primary" } 
-              : theme === "orchid"
-              ? { background: "bg-primary" } 
-              : {}}
+            className="absolute z-[11] top-12 right-[-17px] p-4 overflow-hidden origin-top w-[156px] bg-secondary focus:outline-none sm:text-sm border text-left pl-5 border-primary"
+            // style={
+            //   theme === "terminal"
+            //     ? { background: "bg-primary" }
+            //     : theme === "orchid"
+            //       ? { background: "bg-primary" }
+            //       : theme === "system"
+            //         ? { background: "bg-primary" } : {}}
           >
-            <div className="grid text-lg">
+            <div className="grid text-lg animate-in">
               {links.map((link) => (
                 <Link
+                  style={{ "--index": link.index } as React.CSSProperties}
                   key={link.href}
                   href={link.href}
                   className={clsx(
-                    "px-4 py-2 hover:text-secondary transition-colors",
+                    "animate-in px-4 py-2 hover:text-secondary transition-colors",
                     pathname === link.href
                       ? "text-secondary"
                       : "font-normal"
