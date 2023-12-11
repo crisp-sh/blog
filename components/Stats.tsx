@@ -4,12 +4,12 @@ import useSWR from "swr";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 
-import { FaYoutube, FaGithub, FaSpotify } from "react-icons/fa";
+import { FaGithub, FaSpotify } from "react-icons/fa";
 import { ArrowTrendingUpIcon } from "@heroicons/react/20/solid";
 
 import FlipNumber from "@/components/FlipNumber";
 import fetcher from "@/lib/fetcher";
-import { addCommas, getThemeFont, truncateString } from "@/lib/utils";
+import { addCommas, getThemeFont } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 type NowPlayingSong = {
@@ -71,10 +71,10 @@ export default function Stats() {
             {nowPlaying?.isPlaying ? (
               <div>
                 <span>
-                  {truncateString(nowPlaying.title, 24)}
+                  {nowPlaying.name}
                 </span>
                 <span className="text-tertiary"> by </span>
-                <span>{truncateString(nowPlaying.artist, 100)}</span>
+                <span>{nowPlaying.artist}</span>
               </div>
             ) : (
               <span>Not Playing</span>
@@ -92,7 +92,7 @@ export default function Stats() {
             <FlipNumber>
               {githubData ? addCommas(githubData?.repoCount) : "000"}
             </FlipNumber>
-            <span className="text-secondary"> repositories</span>
+            <span className="text-secondary"> projects</span>
           </div>
         </Link>
       </li>
@@ -103,7 +103,7 @@ export default function Stats() {
             <FlipNumber>
               {postsData ? addCommas(postsData?.total) : "0,000"}
             </FlipNumber>
-            <span className="text-secondary"> website hits</span>
+            <span className="text-secondary"> website views</span>
           </div>
         </Link>
       </li>

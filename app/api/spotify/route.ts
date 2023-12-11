@@ -1,90 +1,55 @@
-import axios from 'axios';
-import querystring from 'querystring';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
 
-const {
-  SPOTIFY_CLIENT_ID: client_id,
-  SPOTIFY_CLIENT_SECRET: client_secret,
-  SPOTIFY_REFRESH_TOKEN: refresh_token,
-} = process.env;
+import getNowPlaying from '@/lib/spotify'
 
-const token = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
-const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
-const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 
-interface SpotifyData {
-  is_playing: boolean;
-  item: {
-    name: string;
-    album: {
-      name: string;
-      artists: Array<{ name: string }>;
-      images: [{ url: string }];
-    };
-    external_urls: {
-      spotify: string;
-    };
-  };
-  currently_playing_type: string;
-}
+export const GET = async () => {
+  try {
+    const response = await getNowPlaying()
 
-const getAccessToken = async () => {
-  const res = await axios.post<{ access_token: string }>(
-    TOKEN_ENDPOINT,
-    querystring.stringify({
-      grant_type: 'refresh_token',
-      refresh_token,
-    }),
-    {
-      headers: {
-        Authorization: `Basic ${token}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
+    if (
+      response.status === 204 ||
+      response.status > 400 ||
+      response?.data?.item === null ||
+      !response.data
+    ) {
+      return NextResponse.json({ isPlaying: false })
     }
-  );
 
-  return res.data.access_token;
-};
+    const song = response.data
 
-export async function GET(req: NextRequest) {
-  const access_token = await getAccessToken();
+    if (song.is_playing === false) {
+      return NextResponse.json({ isPlaying: false })
+    }
 
-  const response = await axios.get<SpotifyData>(NOW_PLAYING_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+    const isPlaying = song.is_playing
+    const name = song.item.name
+    const artist = song.item.artists
+      .map((_artist: { name: string }) => {
+        return _artist.name
+      })
+      .join(', ')
+    const album = song.item.album.name
+    const albumImage = song.item.album.images[0].url
+    const songUrl = song.item.external_urls.spotify
 
-  if (
-    response.status === 204 ||
-    response.status > 400 ||
-    response.data.currently_playing_type !== 'track'
-  ) {
-    return new NextResponse(JSON.stringify({ isPlaying: false }), {
-      status: 200,
-      headers: {
-        'Cache-Control': 'public, s-maxage=180, stale-while-revalidate=90',
-        'Content-Type': 'application/json',
+    return NextResponse.json({
+      isPlaying,
+      name,
+      artist,
+      album,
+      albumImage,
+      songUrl
+    })
+  } catch {
+    return NextResponse.json(
+      {
+        isPlaying: false,
+        message: 'Error getting Now Playing from Spotify'
       },
-    });
+      { status: 500 }
+    )
   }
-
-  const data = {
-    isPlaying: response.data.is_playing,
-    title: response.data.item.name,
-    album: response.data.item.album.name,
-    artist: response.data.item.album.artists
-      .map((artist) => artist.name)
-      .join(', '),
-    albumImageUrl: response.data.item.album.images[0].url,
-    songUrl: response.data.item.external_urls.spotify,
-  };
-
-  return new NextResponse(JSON.stringify(data), {
-    status: 200,
-    headers: {
-      'Cache-Control': 'public, s-maxage=180, stale-while-revalidate=90',
-      'Content-Type': 'application/json',
-    },
-  });
 }
