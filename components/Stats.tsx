@@ -24,7 +24,7 @@ type NowPlayingSong = {
 
 export function GitHub() {
   const { data: githubData, error: githubDataError } = useSWR(
-    `/api/github?username=brianruizy`,
+    `/api/github?username=sellerscrisp`,
     fetcher
   );
 
