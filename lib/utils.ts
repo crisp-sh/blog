@@ -17,13 +17,30 @@ export function getThemeFont(theme: string | undefined): string {
     case "light":
       return `${bodoni.className} tracking-wide`;
     case "dark":
-      return `${bodoni.className} tracking-wide`;
+      return `${redrose.className} tracking-wide`;
     case "terminal":
       return `${redhatmono.className} tracking-tight`;
     case "orchid":
       return `${bodoni.className} tracking-wide`;
     case "system":
       return `${bodoni.className} tracking-wide`;
+    default:
+      return "";
+  }
+}
+
+export function getThemeFontVariable(theme: string | undefined): string {
+  switch (theme) {
+    case "light":
+      return bodoni.variable;
+    case "dark":
+      return redrose.variable;
+    case "terminal":
+      return redhatmono.variable;
+    case "orchid":
+      return bodoni.variable;
+    case "system":
+      return bodoni.variable;
     default:
       return "";
   }
