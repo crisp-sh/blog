@@ -1,5 +1,5 @@
 import { Inter, Bodoni_Moda, Red_Hat_Mono, Red_Rose } from "next/font/google";
-import localFont from "next/font/local";
+// import localFont from "next/font/local";
 
 // export const cardillac = localFont({
 //   src: [

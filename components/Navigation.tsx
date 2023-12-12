@@ -26,7 +26,7 @@ export default function Navigation() {
   const { theme } = useTheme();
 
   return (
-    <aside className="z-[10] fixed top-0 right-0 bg-secondary p-4 flex items-center border border-primary">
+    <aside className="z-[10] fixed top-0 right-0 bg-secondary p-4 flex items-center justify-left border border-primary w-[164px]">
       <div className="mr-4">
         <ThemeSwitcher />
       </div>
@@ -53,7 +53,7 @@ export default function Navigation() {
           leaveTo="opacity-0 translate-y-1"
         >
           <Popover.Panel
-            className="absolute z-[11] top-12 right-[-16.66px] p-4 overflow-hidden origin-top w-[154.44px] bg-secondary focus:outline-none sm:text-sm border text-left pl-5 border-primary"
+            className="absolute z-[11] top-[48px] right-[-25px] p-4 overflow-hidden origin-top w-[164px] bg-secondary focus:outline-none sm:text-sm border text-left pl-5 border-primary"
           // style={
           //   theme === "terminal"
           //     ? { background: "bg-primary" }

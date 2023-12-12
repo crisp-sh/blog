@@ -59,9 +59,9 @@ export default function ThemeSwitcher() {
                     static
                     initial={{ opacity: 0, scale: 1 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    exit={{ opacity: 0, scale: 1 }}
                     transition={{ type: "spring", bounce: 0.3, duration: 0.3 }}
-                    className="absolute bg-primary z-[11] top-10 right-[-107px] translate-y-full translate-x-0 p-2 mt-2 overflow-hidden text-base  w-[156px] focus:outline-none sm:text-sm capitalize border border-primary"
+                    className="absolute bg-primary z-[11] top-[48px] left-[-17px] p-2 overflow-hidden text-base w-[164px] focus-visible:outline-none focus:ring-0 capitalize border border-primary"
                   >
                     {themes.map((theme) => (
                       <Listbox.Option
