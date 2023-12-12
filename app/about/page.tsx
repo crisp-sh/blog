@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 import Link from "@/components/ui/Link";
 import Section from "@/components/Section";
-import SectionHeader from "@/components/SectionHeader";
+import Header from "@/components/Header";
 import ConnectLinks from "../../components/ConnectLinks";
 import Workplaces from "./components/Workplaces";
 import Gallery from "./components/Gallery";
@@ -26,8 +26,8 @@ export default function About() {
   return (
     <div className="flex flex-col gap-16 md:gap-24">
       <div>
-        <SectionHeader heading="About Me">
-        </SectionHeader>
+        <Header heading="About Me">
+        </Header>
         <p
           className="text-secondary animate-in"
           style={{ "--index": 1 } as React.CSSProperties}

@@ -8,11 +8,13 @@ import Link from "@/components/ui/Link";
 import Mdx from "@/app/blog/components/ui/MdxWrapper";
 import ViewCounter from "@/app/blog/components/ui/ViewCounter";
 import PostList from "@/app/blog/components/ui/PostList";
+import PostHeader from "../components/ui/PostHeaders";
 import Subscribe from "@/app/blog/components/ui/NewsletterSignupForm";
 import { formatDate } from "lib/formatdate";
 
 import Avatar from "@/public/avatar.png";
 import clsx from "clsx";
+import { getThemeFont } from "@/lib/utils";
 
 type PostProps = {
   post: PostType;
@@ -62,7 +64,7 @@ export async function generateMetadata(
           alt: title,
         },
       ],
-      
+
     },
   };
 
@@ -89,9 +91,7 @@ export default async function Post({ params }: { params: any }) {
           style={{ "--index": 1 } as React.CSSProperties}
         >
           <div className="max-w space-y-2">
-            <h1 className="text-3xl font-bold leading-tight tracking-tight text-primary">
-              {post.title}
-            </h1>
+            <PostHeader title={post.title} size="5xl" className="uppercase font-semibold tracking-tight" />
             <p className="text-lg leading-tight text-secondary md:text-xl">
               {post.summary}
             </p>
