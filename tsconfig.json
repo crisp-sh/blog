@@ -29,6 +29,9 @@
       ],
       "contentlayer/generated": [
         "./.contentlayer/generated"
+      ],
+      "@/fonts": [
+        "./app/fonts"
       ]
     }
   },
@@ -39,7 +42,8 @@
     ".next/types/**/*.ts",
     "lib/fetcher.js",
     ".contentlayer/generated",
-    "lib/rendercanvas.js"
+    "lib/rendercanvas.js",
+    "lib/spotify.ts"
   ],
   "exclude": [
     "node_modules"
