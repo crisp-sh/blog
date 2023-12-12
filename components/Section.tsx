@@ -27,7 +27,7 @@ export default function Section({
           "md:w-32 text-secondary shrink-0",
           headingAlignment === "right" && "md:text-right",
           getThemeFont(theme),
-          )}
+        )}
       >
         {heading}
       </h2>

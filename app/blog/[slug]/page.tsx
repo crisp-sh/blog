@@ -45,7 +45,7 @@ export async function generateMetadata(
     slug,
   } = post;
 
-  const ogImage = `https://b-r.io/${image}`;
+  const ogImage = `https://b.crisp.sh/${image}`;
 
   const metadata: Metadata = {
     title: `${title} | S.H. Crisp`,
@@ -55,10 +55,10 @@ export async function generateMetadata(
       description,
       type: "article",
       publishedTime,
-      url: `https://b-r.io/blog/${title}`,
+      url: `https://b.crisp.sh/blog/${title}`,
       images: [
         {
-          url: `https://b-r.io/api/og?title=${title}`,
+          url: `https://b.crisp.sh/api/og?title=${title}`,
           alt: title,
         },
       ],
@@ -74,7 +74,7 @@ export default async function Post({ params }: { params: any }) {
 
   // const seoTitle = `${post.title} | S.H. Crisp`;
   // const seoDesc = `${post.summary}`;
-  // const url = `https://b-r.io/blog/${post.slug}`;
+  // const url = `https://b.crisp.sh/blog/${post.slug}`;
   // const MDXContent = useMDXComponent(post?.body.code);
 
   if (!post) {
@@ -106,7 +106,7 @@ export default async function Post({ params }: { params: any }) {
               className="rounded-full bg-secondary"
             />
             <div className="leading-tight">
-              <p className="font-medium text-primary">S.H. Crisp</p>
+              <p className={clsx("font-medium text-primary")}>S.H. Crisp</p>
               <p className={clsx("text-secondary")}>
                 <time dateTime={post.publishedAt}>
                   {formatDate(post.publishedAt)}

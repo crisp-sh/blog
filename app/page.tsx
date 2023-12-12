@@ -4,12 +4,17 @@ import { allPosts } from ".contentlayer/generated";
 
 import PostList from "./blog/components/ui/PostList";
 import Stats from "@/components/Stats";
+import SectionHeader from "@/components/SectionHeader"
 
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 import Avatar from "@/public/avatar.png";
 
 import Filter from "bad-words";
 import React from "react";
+import { useTheme } from "next-themes"
+
+import { bodoni, inter, redrose } from "@/fonts";
+import clsx from "clsx";
 
 export default async function Home() {
   const posts = allPosts
@@ -24,9 +29,10 @@ export default async function Home() {
     <div className="flex flex-col gap-8 md:gap-16">
       <div className="flex animate-in flex-col gap-8">
         <div>
-          <h1 className="animate-in text-3xl font-bold tracking-tight text-primary">
-            S.H. Crisp
-          </h1>
+          {/* <h1 className={`${bodoni.className} animate-in text-3xl font-semibold text-primary`}> */}
+          <SectionHeader heading="Sellers H. Crisp">
+            
+          </SectionHeader>
 
           <p
             className="animate-in text-secondary"
@@ -88,7 +94,7 @@ export default async function Home() {
         className="flex animate-in flex-col gap-6"
         style={{ "--index": 4 } as React.CSSProperties}
       >
-        <h2 className="text-tertiary font-normal">Recent Posts</h2>
+        <h2 className="text-secondary font-normal">Recent Posts</h2>
         <PostList posts={posts} />
         <Link
           href="/blog"

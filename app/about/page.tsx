@@ -3,6 +3,7 @@ import { Metadata } from "next";
 
 import Link from "@/components/ui/Link";
 import Section from "@/components/Section";
+import SectionHeader from "@/components/SectionHeader";
 import ConnectLinks from "../../components/ConnectLinks";
 import Workplaces from "./components/Workplaces";
 import Gallery from "./components/Gallery";
@@ -18,16 +19,15 @@ import colorado from "public/gallery/colorado.jpg";
 export const metadata: Metadata = {
   title: "About | S.H. Crisp",
   description:
-    "I am a full-stack software engineer who basically just enjoys creating things.",
+    "I'm a senior at the University of Georgia, stuying a range of topics affected by international politics.",
 };
 
 export default function About() {
   return (
     <div className="flex flex-col gap-16 md:gap-24">
       <div>
-        <h1 className="animate-in text-3xl font-bold tracking-tight">
-          About Me
-        </h1>
+        <SectionHeader heading="About Me">
+        </SectionHeader>
         <p
           className="text-secondary animate-in"
           style={{ "--index": 1 } as React.CSSProperties}
@@ -47,20 +47,23 @@ export default function About() {
                 className="underline"
                 href="https://spia.uga.edu/"
               >
-              University of Georgia
-              </Link>, studying topics like cyber security, human rights, and climate change. 
+                University of Georgia
+              </Link>, studying a range of topics affected by international politics.
+              Cyber security, economics, human rights, and climate change pique my interest the most.
+            </p>
+            <p>
+              My passions lie in empowering people globally through innovative technologies, as is expressed in my mantra,
+              &ldquo;people, places, and technology.&ldquo;
+            </p>
+            <p>
               Previously, I attended{" "}
               <Link
                 className="underline"
                 href="https://www.springboard.com/courses/software-engineering-career-track/"
               >
-              Springboard&apos;s
+                Springboard&apos;s
               </Link>{" "}
-              software engineering bootcamp.
-            </p>
-            <p>
-              When I&apos;m not at my desk I am probably lifting weights,
-              playing soccer, or at a coffee shop :)
+              software engineering bootcamp to learn web development
             </p>
           </div>
         </Section>
@@ -107,22 +110,12 @@ export default function About() {
         <Section heading="Work" headingAlignment="left">
           <div className="flex flex-col w-full gap-8">
             <p>
-              {new Date().getFullYear() - 2016}+ years of development experience.
+              {new Date().getFullYear() - 2015}+ years of programming under my belt.
             </p>
             <p>
-              I started my career teaching others how to code, which I will
-              always be appreciative of. Then I worked at a few small local
-              companies. Now I&apos;m a full stack engineer currently working at{" "}
-              <Link
-                className="underline"
-                href="https://hines.com"
-
-              >
-                Hines
-              </Link>
-              , one of the largest private real estate investors in the world.
+              Under construction!
             </p>
-            <Workplaces items={workplaces} />
+            {/* <Workplaces items={workplaces} /> */}
           </div>
         </Section>
       </div>
