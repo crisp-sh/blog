@@ -2,13 +2,16 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import { useTheme } from "next-themes";
+import { getThemeFont } from "@/lib/utils";
 
 import NavLink from "./ui/NavLink";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 import { Popover, Transition } from "@headlessui/react";
 import clsx from "clsx";
+import { bodoni } from "@/fonts"
 
 const links = [
   { label: "Home", href: "/", index: 1 },
@@ -50,14 +53,14 @@ export default function Navigation() {
           leaveTo="opacity-0 translate-y-1"
         >
           <Popover.Panel
-            className="absolute z-[11] top-12 right-[-17px] p-4 overflow-hidden origin-top w-[156px] bg-secondary focus:outline-none sm:text-sm border text-left pl-5 border-primary"
-            // style={
-            //   theme === "terminal"
-            //     ? { background: "bg-primary" }
-            //     : theme === "orchid"
-            //       ? { background: "bg-primary" }
-            //       : theme === "system"
-            //         ? { background: "bg-primary" } : {}}
+            className="absolute z-[11] top-12 right-[-16.66px] p-4 overflow-hidden origin-top w-[154.44px] bg-secondary focus:outline-none sm:text-sm border text-left pl-5 border-primary"
+          // style={
+          //   theme === "terminal"
+          //     ? { background: "bg-primary" }
+          //     : theme === "orchid"
+          //       ? { background: "bg-primary" }
+          //       : theme === "system"
+          //         ? { background: "bg-primary" } : {}}
           >
             <div className="grid text-lg animate-in">
               {links.map((link) => (
@@ -65,7 +68,7 @@ export default function Navigation() {
                   style={{ "--index": link.index } as React.CSSProperties}
                   key={link.href}
                   href={link.href}
-                  className={clsx(
+                  className={clsx(getThemeFont(theme),
                     "animate-in px-4 py-2 hover:text-secondary transition-colors",
                     pathname === link.href
                       ? "text-secondary"

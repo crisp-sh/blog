@@ -4,7 +4,6 @@ import { NextRequest } from 'next/server';
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const postTitle = searchParams.get('title');
- 
 
   return new ImageResponse(
     (
@@ -16,7 +15,7 @@ export async function GET(req: NextRequest) {
           flexDirection: 'column',
           alignItems: 'flex-start',
           justifyContent: 'center',
-          backgroundImage: 'url(https://b-r.io/og-bg.png)',
+          backgroundImage: 'url(https://b.crisp.sh/og-bg.png)',
         }}
       >
         <div
