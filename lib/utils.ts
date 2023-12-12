@@ -1,6 +1,7 @@
 // lib/utils.ts
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { bodoni, redhatmono, inter, redrose } from "@/fonts"
 
 export function addCommas(x: number | null | undefined): string {
   if (x == null) return ''; // Return an empty string for null or undefined
@@ -11,17 +12,19 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function getThemeFont(theme: string | undefined): string {  
+export function getThemeFont(theme: string | undefined): string {
   switch (theme) {
     case "light":
-      return "font-sans"; // Replace with actual class names
+      return `${bodoni.className} tracking-wide`;
     case "dark":
-      return "font-sans"; // Replace with actual class names
+      return `${bodoni.className} tracking-wide`;
     case "terminal":
-      return "font-mono tracking-tight";
+      return `${redhatmono.className} tracking-tight`;
     case "orchid":
-      return "font-serif"; // Replace with actual class names
+      return `${bodoni.className} tracking-wide`;
+    case "system":
+      return `${bodoni.className} tracking-wide`;
     default:
-      return "font-serif"; // Default case if no theme matches
+      return "";
   }
 }
