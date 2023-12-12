@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,600;1,6..96,700;1,6..96,800;1,6..96,900&display=swap'); */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,6 +40,9 @@
     --brandTinted: #6165dc1f;
     --bg: var(--gray-1);
     --boxBg: var(--gray-4);
+    --font-sans: var(--font-inter);
+    --font-serif: var(--font-bodoni);
+    --font-mono: var(--font-mono) 
   }
 
   .light .prose {
@@ -250,15 +255,15 @@ input:-webkit-autofill:focus {
 }
 
 .prose h2 {
-  @apply mb-4 text-xl md:text-2xl;
+  @apply mb-4 text-xl md:text-2xl font-serif;
 }
 
 .prose h3 {
-  @apply mb-2 mt-[48px] text-lg;
+  @apply mb-2 mt-[48px] text-lg font-serif;
 }
 
 .prose p code {
-  @apply whitespace-pre-line rounded border border-primary bg-tertiary px-1 font-normal  text-primary dark:bg-secondaryA;
+  @apply whitespace-pre-line rounded border border-primary bg-tertiary px-1 font-normal text-primary dark:bg-secondaryA;
 }
 
 .prose
