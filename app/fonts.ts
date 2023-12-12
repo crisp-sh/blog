@@ -1,17 +1,17 @@
 import { Inter, Bodoni_Moda, Red_Hat_Mono, Red_Rose } from "next/font/google";
 import localFont from "next/font/local";
 
-export const cardillac = localFont({
-  src: [
-    {
-      path: './cardillac-lig-webfont.woff',
-      style: 'normal',
-    }
-  ],
-  display: 'swap',
-  variable: '--font-cardillac',
-  fallback: ['Times New Roman', 'Times', 'serif'],
-});
+// export const cardillac = localFont({
+//   src: [
+//     {
+//       path: './cardillac-lig-webfont.woff',
+//       style: 'normal',
+//     }
+//   ],
+//   display: 'swap',
+//   variable: '--font-cardillac',
+//   fallback: ['Times New Roman', 'Times', 'serif'],
+// });
 
 export const inter = Inter({
   weight: ['400', '700'],
