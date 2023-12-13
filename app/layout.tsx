@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${bodoni.variable} ${redhatmono.variable}`} suppressHydrationWarning>
       <body className={`${inter.className} antialiased bg-primary text-primary`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <div className="flex flex-col min-h-screen items-center">
             <div className="w-full max-w-4xl p-6 md:p-10 lg:top-[50px] md:top-[50px] sm:top-[50px]">
               {children}
