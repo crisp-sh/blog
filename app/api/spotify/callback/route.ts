@@ -10,6 +10,10 @@ export async function GET(req: NextRequest) {
   const url = new URL(req.nextUrl.toString());
   const code = url.searchParams.get('code');
 
+  if (process.env.NODE_ENV === 'production') {
+    return new NextResponse("This route is not available in production", { status: 403 });
+  }
+
   if (!code) {
     return NextResponse.redirect('/'); // Redirect to home page if code is not present
   }
