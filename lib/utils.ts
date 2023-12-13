@@ -45,3 +45,9 @@ export function getThemeFontVariable(theme: string | undefined): string {
       return "";
   }
 }
+
+export function truncateString(str: string | undefined, maxLength: number): string {
+  if (!str) return ""; // Return an empty string if the input is undefined
+  if (str.length <= maxLength) return str; // Return the string as is if it's short enough
+  return str.slice(0, maxLength) + '...'; // Truncate and append ellipsis
+}

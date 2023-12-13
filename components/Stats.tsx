@@ -9,7 +9,7 @@ import { ArrowTrendingUpIcon } from "@heroicons/react/20/solid";
 
 import FlipNumber from "@/components/FlipNumber";
 import fetcher from "@/lib/fetcher";
-import { addCommas, getThemeFont } from "@/lib/utils";
+import { addCommas, getThemeFont, truncateString } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 type NowPlayingSong = {
@@ -98,18 +98,18 @@ export default function Stats() {
             {isPlaying ? (
               <div>
                 <span>
-                  {song?.name}
+                  {truncateString(song?.name, 14)}
                 </span>
                 <span className="text-tertiary"> by </span>
-                <span>{song?.artist}</span>
+                <span>{truncateString(song?.artist, 16)}</span>
               </div>
             ) : (
               <div>
                 <span>
-                  {song?.name}
+                  {truncateString(song?.name, 14)}
                 </span>
                 <span className="text-tertiary"> by </span>
-                <span>{song?.artist}</span>
+                <span>{truncateString(song?.artist, 16)}</span>
               </div>
             )}
           </div>
