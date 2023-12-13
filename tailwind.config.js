@@ -50,8 +50,8 @@ module.exports = {
         },
       },
       animation: {
-        in: "in .6s both",
-        "in-reverse": "in-reverse .6s both",
+        in: "in .4s both",
+        "in-reverse": "in-reverse .4s both",
       },
     },
   },
