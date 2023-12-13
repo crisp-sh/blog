@@ -22,7 +22,7 @@ export default function PostHeader({
 
   return (
     <>
-      <p className={clsx(getThemeFont(theme), `animate-in text-${size} ${className}`)}>
+      <p className={clsx(`animate-in text-${size} ${className}`)}>
         {title}
       </p>
     </>
