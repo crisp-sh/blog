@@ -26,8 +26,9 @@ export default function About() {
   return (
     <div className="flex flex-col gap-16 md:gap-24">
       <div>
-        <Header heading="About Me">
-        </Header>
+        <h1 className="font-bold tracking-tight text-3xl">
+          About Me
+        </h1>
         <p
           className="text-secondary animate-in"
           style={{ "--index": 1 } as React.CSSProperties}
@@ -39,7 +40,7 @@ export default function About() {
         className="flex flex-col gap-16 animate-in md:gap-24"
         style={{ "--index": 3 } as React.CSSProperties}
       >
-        <Section heading="About" headingAlignment="left">
+        <Section heading="Summary" headingAlignment="left">
           <div className="flex flex-col gap-6">
             <p>
               I&apos;m currently a senior at the{" "}
