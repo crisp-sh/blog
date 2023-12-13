@@ -69,5 +69,6 @@ export default makeSource({
   documentTypes: [Post, Project],
   mdx: {
     rehypePlugins: [rehypePrism, rehypeSlug],
+    remarkPlugins: [],
   },
 });
