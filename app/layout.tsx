@@ -4,8 +4,7 @@ import React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import clsx from "clsx";
-import { bodoni, inter, redhatmono } from "@/fonts"
+import { bodoni, inter, redhatmono, montserrat, redrose, imbue } from "@/fonts"
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navigation from "@/components/Navigation";
@@ -19,15 +18,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${bodoni.variable} ${redhatmono.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`
+        ${montserrat.variable} 
+        ${bodoni.variable} 
+        ${redhatmono.variable} 
+        ${redrose.variable}
+        ${imbue.variable}
+      `}
+      suppressHydrationWarning
+    >
       <body className={`${inter.className} antialiased bg-primary text-primary`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <div className="flex flex-col min-h-screen items-center">
-            <div className="w-full max-w-4xl p-6 md:p-10 lg:top-[50px] md:top-[50px] sm:top-[50px]">
+            <div className="w-full max-w-4xl p-6 md:p-10 max-sm:mt-12">
               {children}
             </div>
-            <Navigation />
           </div>
+            <Navigation />
         </ThemeProvider>
         <Analytics />
       </body>
