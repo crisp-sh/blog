@@ -4,7 +4,7 @@ import { allPosts } from ".contentlayer/generated";
 
 import PostList from "./blog/components/ui/PostList";
 import Stats from "@/components/Stats";
-import Header from "@/components/Header"
+// import Header from "@/components/Header"
 
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
 import Avatar from "@/public/avatar.png";
@@ -29,12 +29,9 @@ export default async function Home() {
     <div className="flex flex-col gap-8 md:gap-16">
       <div className="flex animate-in flex-col gap-8">
         <div>
-          {/* <h1 className={`${bodoni.className} animate-in text-3xl font-semibold text-primary`}> */}
-          <Header 
-            title="Sellers H. Crisp" 
-            size="3xl" 
-            className="tracking-tight font-semibold"
-          />
+          <h1 className={`${bodoni.className} animate-in text-3xl font-semibold text-primary`}>
+            Sellers H. Crisp
+          </h1>
           <p
             className="animate-in text-secondary"
             style={{ "--index": 1 } as React.CSSProperties}

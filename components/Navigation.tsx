@@ -68,7 +68,7 @@ export default function Navigation() {
                   style={{ "--index": link.index } as React.CSSProperties}
                   key={link.href}
                   href={link.href}
-                  className={clsx(getThemeFont(theme),
+                  className={clsx(
                     "animate-in px-4 py-2 hover:text-secondary transition-colors",
                     pathname === link.href
                       ? "text-secondary"

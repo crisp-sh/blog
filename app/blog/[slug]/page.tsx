@@ -91,7 +91,10 @@ export default async function Post({ params }: { params: any }) {
           style={{ "--index": 1 } as React.CSSProperties}
         >
           <div className="max-w space-y-2">
-            <PostHeader title={post.title} size="5xl" className="uppercase font-semibold tracking-tight" />
+            {/* <PostHeader title={post.title} size="5xl" className="uppercase font-semibold tracking-tight" /> */}
+            <h1 className="font-semibold tracking-tight text-4xl">
+              {post.title}
+            </h1>
             <p className="text-lg leading-tight text-secondary md:text-xl">
               {post.summary}
             </p>

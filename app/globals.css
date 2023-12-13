@@ -40,9 +40,30 @@
     --brandTinted: #6165dc1f;
     --bg: var(--gray-1);
     --boxBg: var(--gray-4);
-    --font-sans: var(--font-inter);
-    --font-serif: var(--font-bodoni);
-    --font-mono: var(--font-mono) 
+    --font-light: var(--font-inter);
+    --font-dark: var(--font-redrose);
+    --font-terminal: var(--font-redhatmono);
+    --font-orchid: var(--font-bodoni);
+  }
+
+  .light {
+    --font-theme: var(--font-light);
+  }
+  
+  .dark {
+    --font-theme: var(--font-dark);
+  }
+  
+  .terminal {
+    --font-theme: var(--font-terminal);
+  }
+  
+  .orchid {
+    --font-theme: var(--font-orchid);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-theme);
   }
 
   .light .prose {
@@ -65,6 +86,7 @@
   }
 
   .orchid {
+    /* using pink colors */
     --gray-a4: var(--pink-a4);
     --gray-1: var(--pink-1);
     --gray-2: var(--pink-2);
@@ -148,6 +170,10 @@
   body {
     overflow-x: hidden;
     background-color: var(--bg);
+
+  }
+  h1, h2, h3, h4, h5, h6, span {
+    font-family: var(--font-theme) !important;
   }
 }
 
