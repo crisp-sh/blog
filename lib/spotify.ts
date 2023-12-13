@@ -66,6 +66,9 @@ class Spotify {
       const response = await fetch(this.LAST_PLAYED_ENDPOINT, {
         headers: {
           Authorization: `Bearer ${accessToken}`
+        },
+        next: {
+          revalidate: 60,
         }
       })
 
