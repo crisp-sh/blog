@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-
 import Spotify from '@/lib/spotify'
 
 export const runtime = 'edge'
@@ -9,36 +8,30 @@ const spotify = new Spotify();
 
 export const GET = async () => {
   try {
-    const response = await spotify.getNowPlaying()
+    const response = await spotify.getLastPlayed()
 
     if (
       response.status === 204 ||
       response.status > 400 ||
-      response?.data?.item === null ||
-      !response.data
+      response?.data === null
     ) {
-      return NextResponse.json({ isPlaying: false })
+      console.log('Response status: ', response.status)
+      return NextResponse.json({ message: 'No recently played track found' }, { status: response.status })
     }
 
     const song = response.data
 
-    if (song.is_playing === false) {
-      return NextResponse.json({ isPlaying: false })
-    }
-
-    const isPlaying = song.is_playing
-    const name = song.item.name
-    const artist = song.item.artists
+    const name = song.name
+    const artist = song.artists
       .map((_artist: { name: string }) => {
         return _artist.name
       })
       .join(', ')
-    const album = song.item.album.name
-    const albumImage = song.item.album.images[0].url
-    const songUrl = song.item.external_urls.spotify
+    const album = song.album.name
+    const albumImage = song.album.images[0].url
+    const songUrl = song.external_urls.spotify
 
     return NextResponse.json({
-      isPlaying,
       name,
       artist,
       album,
@@ -48,10 +41,9 @@ export const GET = async () => {
   } catch {
     return NextResponse.json(
       {
-        isPlaying: false,
-        message: 'Error getting Now Playing from Spotify'
+        message: 'An error occurred while fetching the last played song.'
       },
       { status: 500 }
-    )
+    );
   }
-}
+};
