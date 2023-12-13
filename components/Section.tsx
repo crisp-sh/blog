@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { useTheme } from "next-themes";
 import { getThemeFont } from "@/lib/utils";
 
-
 type SectionProps = {
   heading: string;
   headingAlignment?: "right" | "left";
@@ -26,7 +25,6 @@ export default function Section({
         className={clsx(
           "md:w-32 text-secondary shrink-0",
           headingAlignment === "right" && "md:text-right",
-          getThemeFont(theme),
         )}
       >
         {heading}

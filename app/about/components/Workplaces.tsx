@@ -37,7 +37,6 @@ function Workplace({ title, company, imageSrc, time, link }: Workplace) {
       </div>
       {time && <time className={clsx(
         "text-secondary",
-        getThemeFont(theme)
       )}>
         {time}
       </time>
