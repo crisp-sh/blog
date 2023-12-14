@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import ThemeSwitcher from "./ThemeSwitcher";
 
+import { inter } from "@/fonts"
+
 import { Popover, Transition } from "@headlessui/react";
 import clsx from "clsx";
 
@@ -36,9 +38,15 @@ export default function Navigation() {
 
   return (
     // lg:top-0 lg:left-0 
-    <aside className="animate-in-reverse fixed top-0 right-0 bg-secondary p-4 flex items-center justify-left border border-primary w-[164px]">
-      <div className="mr-4">
-        <ThemeSwitcher />
+    <aside className="animate-in-reverse fixed top-0 right-0 p-4 flex items-center justify-end border-b border-l max-lg:border-l-0 border-primary bg-primary/90 backdrop-blur-lg max-lg:w-full">
+      <div className="flex justify-between items-center w-full">
+        {/* logo placeholder */}
+        <p className={`max-lg:block hidden text-lg text-secondary ml-2`}>
+          Crisp.sh
+        </p>
+        <div className="mr-4">
+          <ThemeSwitcher />
+        </div>
       </div>
       <Popover className="relative">
         {({ close }) => (
@@ -65,9 +73,9 @@ export default function Navigation() {
               leaveTo="opacity-0 translate-y-1"
             >
               <Popover.Panel
-                className="absolute z-[11] top-[48px] right-[-25px] p-4 overflow-hidden origin-top w-[164px] bg-secondary focus:outline-none sm:text-sm border text-left pl-5 border-primary"
+                className="absolute z-[11] top-[48px] right-[-25px] p-4 overflow-hidden origin-top w-[164px] focus:outline-none border text-left pl-5 border-primary bg-primary"
               >
-                <div className="grid text-lg animate-in font-theme">
+                <div className="grid text-lg animate-in">
                   {links.map((link) => (
                     <MyLink
                       key={link.href}

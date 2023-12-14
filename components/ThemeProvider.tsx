@@ -8,7 +8,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return (
     <NextThemesProvider
       attribute="class"
-      themes={["light", "dark", "terminal", "orchid"]}
+      themes={["light", "dark", "terminal", "sakura"]}
       {...props}
     >
       {children}

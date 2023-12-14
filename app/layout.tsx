@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} antialiased bg-primary text-primary`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <div className="flex flex-col min-h-screen items-center">
-            <div className="w-full max-w-4xl p-6 md:p-10 max-sm:mt-12">
+            <div className="w-full max-w-4xl p-6 md:p-10 max-lg:mt-[64px]">
               {children}
             </div>
           </div>

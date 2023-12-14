@@ -43,7 +43,7 @@
     --font-light: var(--font-redrose);
     --font-dark: var(--font-redrose);
     --font-terminal: var(--font-redhatmono);
-    --font-orchid: var(--font-bodoni);
+    --font-sakura: var(--font-bodoni);
   }
 
   .light {
@@ -58,8 +58,8 @@
     --font-theme: var(--font-terminal);
   }
   
-  .orchid {
-    --font-theme: var(--font-orchid);
+  .sakura {
+    --font-theme: var(--font-sakura);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -85,7 +85,7 @@
     --blue-10: var(--blue-8);
   }
 
-  .orchid {
+  .sakura {
     /* using pink colors */
     --gray-a4: var(--pink-a4);
     --gray-1: var(--pink-1);
@@ -115,7 +115,7 @@
     --gray-a12: var(--pink-a12);
   }
 
-  .orchid .prose {
+  .sakura .prose {
     --tw-prose-headings: var(--gray-12);
     --tw-prose-body: var(--gray-12);
     --tw-prose-bold: var(--gray-9);
@@ -173,7 +173,7 @@
 
   }
   
-  h1, h2, h3, h4, h5, h6, span {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-theme) !important;
   }
 
