@@ -20,7 +20,7 @@ export function getThemeFont(theme: string | undefined): string {
       return `${redrose.className} tracking-wide`;
     case "terminal":
       return `${redhatmono.className} tracking-tight`;
-    case "orchid":
+    case "sakura":
       return `${bodoni.className} tracking-wide`;
     case "system":
       return `${bodoni.className} tracking-wide`;
@@ -37,7 +37,7 @@ export function getThemeFontVariable(theme: string | undefined): string {
       return redrose.variable;
     case "terminal":
       return redhatmono.variable;
-    case "orchid":
+    case "sakura":
       return bodoni.variable;
     case "system":
       return bodoni.variable;
@@ -47,7 +47,22 @@ export function getThemeFontVariable(theme: string | undefined): string {
 }
 
 export function truncateString(str: string | undefined, maxLength: number): string {
-  if (!str) return ""; // Return an empty string if the input is undefined
-  if (str.length <= maxLength) return str; // Return the string as is if it's short enough
-  return str.slice(0, maxLength) + '...'; // Truncate and append ellipsis
+  if (!str) return "";
+  if (str.length <= maxLength) return str;
+  return str.slice(0, maxLength) + '...';
+}
+
+export function cleanSongTitle(title: string): string {
+  const featRegex = /\s\(feat\..*\)/;
+  const remasteredRegex = /\s-\sRemastered\s\d{4}/;
+
+  let cleanedTitle = title.replace(featRegex, '');
+  cleanedTitle = cleanedTitle.replace(remasteredRegex, '');
+
+  return cleanedTitle;
+}
+
+export function getFirstArtist(artistList: string): string {
+  const artists = artistList.split(',');
+  return artists[0].trim();
 }

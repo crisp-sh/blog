@@ -4,12 +4,13 @@ import useSWR from "swr";
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 
-import { FaGithub, FaSpotify } from "react-icons/fa";
-import { ArrowTrendingUpIcon } from "@heroicons/react/20/solid";
+import { SpotifyLogo, TrendUp, GithubLogo } from "@phosphor-icons/react";
 
 import FlipNumber from "@/components/FlipNumber";
+
 import fetcher from "@/lib/fetcher";
-import { addCommas, getThemeFont, truncateString } from "@/lib/utils";
+import { addCommas, cleanSongTitle, getFirstArtist } from "@/lib/utils";
+
 import { useEffect, useState } from "react";
 
 type NowPlayingSong = {
@@ -89,27 +90,28 @@ export default function Stats() {
   );
 
   return (
-    <ul className={clsx("animated-list")}>
+    <ul className={clsx("animated-list flex flex-col justify-center")}>
       <li className="transition-opacity mb-1">
         <Link target="_blank" className="flex gap-3 items-center no-underline" href={song?.songUrl || "#"}>
           {/* <FaSpotify className="text-xl" /> */}
-          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-music" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M9 17v-13h10v13" /><path d="M9 8h10" /></svg>
+          {/* <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-music" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M9 17v-13h10v13" /><path d="M9 8h10" /></svg> */}
+          <SpotifyLogo className="text-tertiary" size={22} weight="duotone"/>
           <div>
             {isPlaying ? (
               <div>
                 <span>
-                  {truncateString(song?.name, 14)}
+                  {cleanSongTitle(song?.name ?? '')}
                 </span>
                 <span className="text-tertiary"> by </span>
-                <span>{truncateString(song?.artist, 16)}</span>
+                <span>{getFirstArtist(song?.artist ?? '')}</span>
               </div>
             ) : (
               <div>
                 <span>
-                  {truncateString(song?.name, 14)}
+                  {cleanSongTitle(song?.name ?? '')}
                 </span>
                 <span className="text-tertiary"> by </span>
-                <span>{truncateString(song?.artist, 16)}</span>
+                <span>{getFirstArtist(song?.artist ?? '')}</span>
               </div>
             )}
           </div>
@@ -121,19 +123,21 @@ export default function Stats() {
           href={"https://github.com/sellerscrisp"}
         >
           {/* <FaGithub className="text-xl" /> */}
-          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+          {/* <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg> */}
+          <GithubLogo className="text-teriary" size={22} weight="duotone"/>
           <div>
             <FlipNumber>
               {githubData ? addCommas(githubData?.repoCount) : "000"}
             </FlipNumber>
-            <span className="text-secondary"> projects</span>
+            <span className="text-teriary"> projects</span>
           </div>
         </Link>
       </li>
       <li className="transition-opacity mb-1">
         <Link className="flex gap-3 items-center" href="/blog">
           {/* <ArrowTrendingUpIcon className="w-5 h-5" /> */}
-          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+          {/* <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg> */}
+          <TrendUp className="text-secondary" size={22} weight="duotone"/>
           <div>
             <FlipNumber>
               {postsData ? addCommas(postsData?.total) : "0,000"}
