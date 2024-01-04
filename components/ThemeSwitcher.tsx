@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 
 import { Check, CheckFat, DotOutline, DotsThree, MoonStars, Sun, TerminalWindow, Tree, UserCircleGear } from "@phosphor-icons/react";
-import CheckIcon from "@heroicons/react/20/solid/CheckIcon";
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -31,19 +30,19 @@ export default function ThemeSwitcher() {
             <div className="relative">
               <Listbox.Button
                 className={clsx(
-                  "relative w-8 h-8 cursor-default rounded-full flex items-center justify-center focus:outline-none"
+                  "relative py-5 px-4 cursor-default rounded-full flex items-center justify-center focus:outline-none hover:cursor-pointer"
                 )}
               >
                 {resolvedTheme === "dark" ? (
-                  <MoonStars size={22} weight="duotone" className="text-secondary" />
+                  <MoonStars size={22} weight="light" className="text-secondary" />
                 ) : resolvedTheme === "light" ? (
-                  <Sun size={22} weight="duotone" className="text-secondary" />
+                  <Sun size={22} weight="light" className="text-secondary" />
                 ) : resolvedTheme === "terminal" ? (
-                  <TerminalWindow size={22} weight="duotone" className="text-secondary" />
+                  <TerminalWindow size={22} weight="light" className="text-secondary" />
                 ) : resolvedTheme === "sakura" ? (
-                  <Tree size={22} weight="duotone" className="text-secondary" />
+                  <Tree size={22} weight="light" className="text-secondary" />
                 ) : (
-                  <UserCircleGear size={22} weight="duotone" className="text-secondary" />
+                  <UserCircleGear size={22} weight="light" className="text-secondary" />
                 )}
               </Listbox.Button>
               <AnimatePresence>
@@ -55,14 +54,14 @@ export default function ThemeSwitcher() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1 }}
                     transition={{ type: "spring", bounce: 0.3, duration: 0.3 }}
-                    className="absolute bg-primary z-[11] top-[48px] left-[-17px] p-2 overflow-hidden text-base w-[164px] focus-visible:outline-none focus:ring-0 capitalize border border-primary"
+                    className="absolute bg-primary z-[11] top-[64px] left-[4px] overflow-hidden text-base w-[164px] p-2 focus-visible:outline-none focus:ring-0 capitalize border border-primary"
                   >
                     {themes.map((theme) => (
                       <Listbox.Option
                         key={theme}
                         className={({ active }) =>
                           clsx(
-                            "relative cursor-default select-none py-2 pl-10 pr-4",
+                            "animate-in relative cursor-default select-none py-2 pl-10 pr-4 hover:cursor-pointer",
                             active ? "bg-tertiary" : ""
                           )
                         }
