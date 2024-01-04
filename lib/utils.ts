@@ -53,16 +53,37 @@ export function truncateString(str: string | undefined, maxLength: number): stri
 }
 
 export function cleanSongTitle(title: string): string {
-  const featRegex = /\s\(feat\..*\)/;
-  const remasteredRegex = /\s-\sRemastered\s\d{4}/;
+  // Patterns to match various extraneous information in song titles
+  const patterns = [
+    /\s*\(.*?\)|\s*\[.*?\]/g, // Catch all for parentheses and square brackets, i.e., "(...)", "[...]"
+    /\s?\(ft[^\)]*\)/ig, // feat. abbreviated
+    /\s[-–—]\s?Remix/ig, // "- Remix" variations
+    /\s[-–—]\s?Demo/ig, // "- Remix" variations
+    /\s[-–—]\s?Live/ig, // "- Live" variations
+    /\s[-–—]\s?Acoustic/ig, // "- Acoustic" variations
+    /\s?\(feat[^\)]*\)/ig, // feat.
+    /\s?\(Deluxe Edition\)/ig,
+    /\s?\(Acoustic\)/ig,
+    /\s?\(Extended Version\)/ig,
+    /\s?\(Explicit\)/ig,
+    /\s?\(Clean\)/ig,
+    /\s?\(Radio Edit\)/ig,
+    /\s?\(Single Version\)/ig,
+    /\s?\(Remaster(ed)?\s?(\d{4})?\)/ig, // "Remastered"
+    /\s\(\d{4}\)/ig, // Any 4+ digit number in parentheses (year)
+    /\s[-–—]\s?Remastered\s\d{4}/ig, // "- Remastered YYYY"
+    /\s?\[[^\]]*\]/ig, // Content in square brackets
+  ];
 
-  let cleanedTitle = title.replace(featRegex, '');
-  cleanedTitle = cleanedTitle.replace(remasteredRegex, '');
-
-  return cleanedTitle;
+  // Applying all patterns to the title
+  return patterns.reduce((cleanedTitle, pattern) => cleanedTitle.replace(pattern, ''), title);
 }
 
 export function getFirstArtist(artistList: string): string {
   const artists = artistList.split(',');
+  if (artists[1] === " Jr.") {
+    return `${artists[0]}, Jr.`; // Fly Away, Grover.
+  }
+  
   return artists[0].trim();
 }
