@@ -3,18 +3,14 @@ import { Metadata } from "next";
 
 import Link from "@/components/ui/Link";
 import Section from "@/components/Section";
-import Header from "@/components/Header";
 import ConnectLinks from "../../components/ConnectLinks";
-import Workplaces from "./components/Workplaces";
-import Gallery from "./components/Gallery";
+// import Workplaces from "./components/Workplaces";
+// import Gallery from "./components/Gallery";
 
-import hinesLogo from "public/work/hines-logo.jpeg";
-import perishipLogo from "public/work/periship-logo.jpeg";
-import camsLogo from "public/work/cams-logo.png";
-import uhdLogo from "public/work/uhd.png";
-
-import meLily from "public/gallery/me-lily.jpg";
-import colorado from "public/gallery/colorado.jpg";
+// import hinesLogo from "public/work/hines-logo.jpeg";
+// import perishipLogo from "public/work/periship-logo.jpeg";
+// import camsLogo from "public/work/cams-logo.png";
+// import uhdLogo from "public/work/uhd.png";
 
 export const metadata: Metadata = {
   title: "About | S.H. Crisp",
@@ -25,20 +21,20 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <div className="flex flex-col gap-16 md:gap-24">
-      <div>
-        <h1 className="font-bold tracking-tight text-3xl">
+      <div style={{ "--index": 1 } as React.CSSProperties}>
+        <h1 className="font-bold tracking-tight text-9xl">
           About Me
         </h1>
         <p
           className="text-secondary animate-in"
-          style={{ "--index": 1 } as React.CSSProperties}
         >
           Let&apos;s get personal.
         </p>
       </div>
+      {/* {Perlin} */}
       <div
         className="flex flex-col gap-16 animate-in md:gap-24"
-        style={{ "--index": 3 } as React.CSSProperties}
+        style={{ "--index": 2 } as React.CSSProperties}
       >
         <Section heading="Summary" headingAlignment="left">
           <div className="flex flex-col gap-6">
@@ -51,20 +47,12 @@ export default function About() {
                 University of Georgia
               </Link>, studying a range of topics affected by international politics.
               Cyber security, economics, human rights, and climate change pique my interest the most.
+              I hope to address any one of these issues in my future career.
             </p>
             <p>
-              My passions lie in empowering people globally through innovative technologies, as is expressed in my mantra,
-              &ldquo;people, places, and technology.&ldquo;
-            </p>
-            <p>
-              Previously, I attended{" "}
-              <Link
-                className="underline"
-                href="https://www.springboard.com/courses/software-engineering-career-track/"
-              >
-                Springboard&apos;s
-              </Link>{" "}
-              software engineering bootcamp to learn web development
+              I&apos;m also a software engineer with a passion for building things, like this very website.
+              For front-end development, I prefer using Next, Tailwind, and Framer Motion within TypeScript.
+
             </p>
           </div>
         </Section>
@@ -124,33 +112,33 @@ export default function About() {
   );
 }
 
-const workplaces = [
-  {
-    title: "Full Stack Engineer",
-    company: "Me",
-    time: "2022 -",
-    imageSrc: hinesLogo,
-    // link: "https://hines.com",
-  },
-  {
-    title: "Software Engineer",
-    company: "Myself",
-    time: "2021 - 2022",
-    imageSrc: perishipLogo,
-    // link: "https://peripharma.com/",
-  },
-  {
-    title: "Python Developer",
-    company: "&",
-    time: "2019 - 2020",
-    imageSrc: camsLogo,
-    // link: "https://camstex.com",
-  },
-  {
-    title: "Coding Camp Instructor",
-    company: "I",
-    time: "2019",
-    imageSrc: uhdLogo,
-    // link: "https://www.uhd.edu/",
-  },
-];
+// const workplaces = [
+//   {
+//     title: "Full Stack Engineer",
+//     company: "Me",
+//     time: "2022 -",
+//     imageSrc: hinesLogo,
+//     // link: "https://hines.com",
+//   },
+//   {
+//     title: "Software Engineer",
+//     company: "Myself",
+//     time: "2021 - 2022",
+//     imageSrc: perishipLogo,
+//     // link: "https://peripharma.com/",
+//   },
+//   {
+//     title: "Python Developer",
+//     company: "&",
+//     time: "2019 - 2020",
+//     imageSrc: camsLogo,
+//     // link: "https://camstex.com",
+//   },
+//   {
+//     title: "Coding Camp Instructor",
+//     company: "I",
+//     time: "2019",
+//     imageSrc: uhdLogo,
+//     // link: "https://www.uhd.edu/",
+//   },
+// ];
