@@ -38,8 +38,7 @@ export default function Navigation() {
 
   return (
     // lg:top-0 lg:left-0 
-    <div>
-      <div className="animate-in-reverse fixed top-0 right-0 flex items-center justify-end bg-primary/90 backdrop-blur-lg max-lg:w-full">
+      <aside className="z-[11] animate-in-reverse fixed top-0 right-0 flex items-center justify-end bg-primary/90 backdrop-blur-lg max-lg:w-full">
         <div className="flex justify-between items-center w-full">
           {/* logo placeholder */}
           <p className={`max-lg:block hidden text-lg text-secondary ml-2`}>
@@ -96,7 +95,6 @@ export default function Navigation() {
             </>
           )}
         </Popover>
-      </div>
-    </div>
+      </aside>
   );
 }
