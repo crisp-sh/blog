@@ -23,7 +23,7 @@ export default function Section({
     <section className="flex flex-col md:flex-row gap-2 md:gap-9 col-reverse">
       <h2
         className={clsx(
-          "md:w-32 text-secondary shrink-0",
+          "md:w-32 text-secondary text-md shrink-0",
           headingAlignment === "right" && "md:text-right",
         )}
       >
