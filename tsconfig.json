@@ -43,7 +43,8 @@
     "lib/fetcher.js",
     ".contentlayer/generated",
     "lib/rendercanvas.js",
-    "lib/spotify.ts"
+    "lib/spotify.ts",
+    "decs.d.ts",
   ],
   "exclude": [
     "node_modules"

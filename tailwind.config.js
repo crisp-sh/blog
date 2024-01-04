@@ -14,9 +14,6 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
-      cursor: {
-        'fancy': 'url(hand.cur), pointer',
-      },
     },
     extend: {
       textColor: {
@@ -41,17 +38,17 @@ module.exports = {
       },
       keyframes: {
         in: {
-          "0%": { transform: "translateY(18px)", opacity: 0 },
+          "0%": { transform: "translateY(7px)", opacity: 0 },
           "100%": { transform: "translateY(0)", opacity: 1 },
         },
         "in-reverse": {
-          "0%": { transform: "translateY(-18px)", opacity: 0 },
+          "0%": { transform: "translateY(-7px)", opacity: 0 },
           "100%": { transform: "translateY(0px)", opacity: 1 },
         },
       },
       animation: {
-        in: "in .4s both",
-        "in-reverse": "in-reverse .4s both",
+        in: "in .6s both",
+        "in-reverse": "in-reverse .6s both",
       },
     },
   },
