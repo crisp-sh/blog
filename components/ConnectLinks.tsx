@@ -1,5 +1,4 @@
-import { FaGithub, FaInstagram, FaLinkedin, FaKeybase, FaKeyboard } from "react-icons/fa";
-// import { FaYoutube } from "react-icons/si";
+import { EnvelopeClosedIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 
 interface ConnectLink {
   label: string;
@@ -9,24 +8,19 @@ interface ConnectLink {
 
 const ConnectLinks: ConnectLink[] = [
   {
-    label: "Email (General)",
+    label: "Email",
     href: "mailto:s@crisp.sh",
-    icon: <FaKeyboard />,
+    icon: <EnvelopeClosedIcon />,
   },
   {
     label: "GitHub",
     href: "https://github.com/sellerscrisp",
-    icon: <FaGithub />,
+    icon: <GitHubLogoIcon />,
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/sellerscrisp/",
-    icon: <FaLinkedin />,
-  },
-  {
-    label: "Keybase",
-    href: "https://keybase.io/shcrisp",
-    icon: <FaKeybase />,
+    icon: <LinkedInLogoIcon />,
   },
 ];
 
