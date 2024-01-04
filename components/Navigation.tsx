@@ -14,9 +14,9 @@ import clsx from "clsx";
 const links = [
   { label: "Home", href: "/", index: 1 },
   // { label: "About", href: "/about", index: 2 },
-  { label: "Writing", href: "/blog", index: 3 },
+  { label: "Writing", href: "/blog", index: 2 },
   // { label: "Gear", href: "/gear" },
-  { label: "Projects", href: "/projects", index: 4 },
+  { label: "Projects", href: "/projects", index: 3 },
 ];
 
 type MyLinkProps = {
