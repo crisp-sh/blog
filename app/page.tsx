@@ -6,7 +6,7 @@ import Stats from "@/components/Stats";
 import Workplaces from "./about/components/Workplaces";
 
 import { ArrowUpRightIcon } from "@heroicons/react/20/solid";
-import Avatar from "@/public/avatar.png";
+// import Avatar from "@/public/avatar.png";
 
 import Filter from "bad-words";
 import React from "react";
@@ -35,7 +35,7 @@ export default async function Home() {
     <div className="flex flex-col gap-8 md:gap-16">
       {/* Page Heading */}
       <div className="flex animate-in flex-col gap-8">
-        <div>
+        <div className="max-lg:hidden">
           <h1
             style={{ "--index": 1 } as React.CSSProperties}
             className={`${bodoni.className} animate-in text-4xl font-semibold text-primary`}
@@ -53,45 +53,16 @@ export default async function Home() {
           className="flex animate-in flex-col gap-16 text-secondary md:flex-row md:items-center"
           style={{ "--index": 3 } as React.CSSProperties}
         >
-          <Image
+          {/* <Image
             src={Avatar}
             width={85}
             height={85}
             alt="avatar"
             className="rounded-full bg-secondary animate-in"
-          />
+          /> */}
           <Stats />
         </div>
-        {/* <ul
-          className="animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6"
-          style={{ "--index": 4 } as React.CSSProperties}
-        >
-          <li className="transition-opacity">
-            <Link
-              href="mailto:s@crisp.sh"
-              className="flex items-center gap-2 no-underline"
-            >
-              <ArrowUpRightIcon className="h-5 w-5" />
-              <span>Email me</span>
-            </Link>
-          </li>
-          <li className="transition-opacity">
-            <Link
-              href="/links"
-              className="flex items-center gap-2 no-underline"
-            >
-              <ArrowUpRightIcon className="h-5 w-5" />
-              <span>More ways to connect</span>
-            </Link>
-          </li>
-        </ul> */}
       </div>
-
-      {/* <div className="inline-flex items-center justify-center w-full">
-        <hr className="w-[100vw] h-px border-0 bg-secondary" />
-        <span className="absolute px-6 text-secondary font-theme -translate-x-1/2 left-1/2 bg-primary">Resume</span>
-      </div> */}
-
       {/* Summary */}
       <div
         className="flex flex-col gap-16 animate-in md:gap-24"
