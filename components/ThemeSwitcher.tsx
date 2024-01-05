@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
-import { Listbox } from "@headlessui/react";
-import clsx from "clsx";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
+import React, { useEffect, useState } from "react";
 
-import { Check, CheckFat, DotOutline, DotsThree, MoonStars, Sun, TerminalWindow, Tree, UserCircleGear } from "@phosphor-icons/react";
+import { Listbox } from "@headlessui/react";
+
+import { useTheme } from "next-themes";
+import { AnimatePresence } from "framer-motion";
+import clsx from "clsx";
+
+import { MoonStars, Sun, TerminalWindow, Tree, UserCircleGear } from "@phosphor-icons/react";
+import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -48,13 +51,7 @@ export default function ThemeSwitcher() {
               <AnimatePresence>
                 {open && (
                   <Listbox.Options
-                    as={motion.ul}
-                    static
-                    initial={{ opacity: 0, scale: 1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1 }}
-                    transition={{ type: "spring", bounce: 0.3, duration: 0.3 }}
-                    className="absolute bg-primary z-[11] top-[64px] left-[4px] overflow-hidden text-base w-[164px] p-2 focus-visible:outline-none focus:ring-0 capitalize border border-primary"
+                    className="absolute bg-primary z-[11] top-[63px] left-[4px] overflow-hidden text-base min-w-[164px] p-2 focus-visible:outline-none focus:ring-0 capitalize border border-primary max-lg:border-t-0"
                   >
                     {themes.map((theme) => (
                       <Listbox.Option
@@ -76,8 +73,12 @@ export default function ThemeSwitcher() {
                               {theme == "system" ? "System" : theme}
                             </span>
                             {selected ? (
-                              <span className="absolute inset-y-0 left-0 flex items-center pl-2 dark:text-neutral-50">
-                                <DotOutline size={22} weight="fill" className="text-primary" />
+                              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                                {/* <DotOutline size={22} weight="fill" className="text-primary" /> */}
+                                <ChevronRightIcon className={clsx(
+                                  "w-4 h-4 text-secondary hover:text-primary cursor-pointer transition-colors",
+                                  open ? "text-primary" : "text-secondary")}
+                                />
                               </span>
                             ) : null}
                           </>
