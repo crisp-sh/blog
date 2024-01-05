@@ -43,6 +43,7 @@ function Workplace({ title, company, imageSrc, time, link }: Workplace) {
       }
     </>
   );
+  
   return (
     <li className="transition-opacity" key={company}>
       {link ? (
