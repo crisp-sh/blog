@@ -25,12 +25,12 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ],
-      "@/fonts": [
-        "./app/fonts"
-      ]
+      "@/components/*": ["./components/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/fonts": ["./app/fonts"],
+      "@/content": ["./content/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"],
     }
   },
   "include": [
