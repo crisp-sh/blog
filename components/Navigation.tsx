@@ -12,6 +12,19 @@ import { Popover, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { PlusIcon } from "@radix-ui/react-icons";
 
+import ConnectLinks from "@/components/ConnectLinks";
+import { Button } from "@/components/ui/Button"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/Drawer"
+
 const links = [
   { label: "Home", href: "/", index: 1 },
   // { label: "About", href: "/about", index: 2 },
@@ -75,6 +88,58 @@ export default function Navigation() {
                     {link.label}
                   </MyLink>
                 ))}
+                <Drawer>
+                  <DrawerTrigger asChild>
+                    <p className="animate-in text-right text-xl px-4 py-2 hover:text-secondary transition-colors cursor-pointer">
+                      Links
+                    </p>
+                  </DrawerTrigger>
+                  <DrawerContent>
+                    <div className="mx-auto w-full max-w-sm">
+                      <DrawerHeader>
+                        <DrawerTitle>Connect with me</DrawerTitle>
+                        <DrawerDescription></DrawerDescription>
+                      </DrawerHeader>
+                      <ul
+                        className="flex-grow grid grid-cols-1 gap-2 lg:gap-3 animated-list animate-in"
+                        style={{ "--index": 3 } as React.CSSProperties}
+                      >
+                        {ConnectLinks.map((link) => (
+                          <li className="transition-opacity col-span-1" key={link.label}>
+                            <Link
+                              href={link.href}
+                              className="transition-opacity no-underline w-full border border-primary p-4 bg-tertiary inline-grid"
+                            >
+                              <div className="flex items-center gap-3">
+                                <span className="text-xl">{link.icon}</span>
+                                {link.label}
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                  className="w-5 h-5 ml-auto text-secondary"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              </div>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                      <DrawerFooter>
+                        <DrawerClose asChild>
+                          <Button variant="link" size="lg">
+                            <span>Close</span>
+                          </Button>
+                        </DrawerClose>
+                      </DrawerFooter>
+                    </div>
+                  </DrawerContent>
+                </Drawer>
               </div>
             </Popover.Panel>
           </>

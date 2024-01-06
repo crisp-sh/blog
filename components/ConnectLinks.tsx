@@ -13,14 +13,14 @@ const ConnectLinks: ConnectLink[] = [
     icon: <EnvelopeClosedIcon />,
   },
   {
-    label: "GitHub",
-    href: "https://github.com/sellerscrisp",
-    icon: <GitHubLogoIcon />,
-  },
-  {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/sellerscrisp/",
     icon: <LinkedInLogoIcon />,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/sellerscrisp",
+    icon: <GitHubLogoIcon />,
   },
 ];
 

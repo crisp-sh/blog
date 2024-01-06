@@ -16,7 +16,7 @@ export default function Blog() {
   const projects = allProjects;
 
   return (
-    <div className="max-w-[700px] mx-auto">
+    <div className="mx-auto">
     <div className="flex flex-col gap-16 md:gap-24 ">
       <div className="flex flex-col gap-8">
         <div>

@@ -26,7 +26,7 @@ function Workplace({ title, company, imageSrc, time, link }: Workplace) {
           width={48}
           height={48}
           className={clsx(
-            "rounded-full",
+            "rounded-full grayscale",
             company === "University of Houston" && "bg-neutral-50"
           )}
         />

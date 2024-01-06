@@ -1,4 +1,3 @@
-import { DrawerContent, DrawerTrigger } from "@/components/ui/Drawer";
 import Link from "@/components/ui/Link";
 import { Metadata } from "next";
 
