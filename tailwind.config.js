@@ -40,7 +40,7 @@ module.exports = {
         primary: "var(--gray-12)",
       },
       keyframes: {
-        in: {
+        "in": {
           "0%": { transform: "translateY(7px)", opacity: 0 },
           "100%": { transform: "translateY(0)", opacity: 1 },
         },
@@ -58,15 +58,12 @@ module.exports = {
         },
       },
       animation: {
-        in: "in .6s both",
+        "in": "in .6s both",
         "in-reverse": "in-reverse .6s both",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("tailwindcss-animate"),
-  ],
+  plugins: [require("@tailwindcss/typography", "tailwindcss-animate")],
 };

@@ -55,7 +55,7 @@ export default function Navigation() {
     <aside className="z-[11] animate-in fixed top-0 right-0 flex items-center justify-end bg-primary/100 max-lg:backdrop-blur-lg max-lg:w-full max-lg:border-b max-lg:border-primary ">
       <div className="flex justify-between items-center w-full">
         <Link href="/">
-          <p className={`max-lg:block hidden text-xl text-primary font-theme px-6`}>
+          <p className={`max-lg:block hidden text-xl text-primary font-theme px-6 tracking-tight`}>
             Sellers H. Crisp
           </p>
         </Link>
@@ -90,7 +90,10 @@ export default function Navigation() {
                 ))}
                 <Drawer>
                   <DrawerTrigger asChild>
-                    <p className="animate-in text-right text-xl px-4 py-2 hover:text-secondary transition-colors cursor-pointer">
+                    <p
+                      className="animate-in text-right text-xl px-4 py-2 hover:text-secondary transition-colors cursor-pointer"
+                      style={{ "--index": 4 } as React.CSSProperties}
+                    >
                       Links
                     </p>
                   </DrawerTrigger>
@@ -100,15 +103,12 @@ export default function Navigation() {
                         <DrawerTitle>Connect with me</DrawerTitle>
                         <DrawerDescription></DrawerDescription>
                       </DrawerHeader>
-                      <ul
-                        className="flex-grow grid grid-cols-1 gap-2 lg:gap-3 animated-list animate-in"
-                        style={{ "--index": 3 } as React.CSSProperties}
-                      >
+                      <ul className="flex-grow flex grid-cols-1 gap-2 lg:gap-3 justify-center items-center animated-list animate-in">
                         {ConnectLinks.map((link) => (
                           <li className="transition-opacity col-span-1" key={link.label}>
                             <Link
                               href={link.href}
-                              className="transition-opacity no-underline w-full border border-primary p-4 bg-tertiary inline-grid"
+                              className="transition-opacity no-underline content-center	w-auto border border-primary p-4 bg-tertiary inline-grid"
                             >
                               <div className="flex items-center gap-3">
                                 <span className="text-xl">{link.icon}</span>
