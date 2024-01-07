@@ -98,17 +98,17 @@ export default function Navigation() {
                     </p>
                   </DrawerTrigger>
                   <DrawerContent>
-                    <div className="mx-auto w-full max-w-sm">
+                    <div className="mx-auto max-w-sm">
                       <DrawerHeader>
                         <DrawerTitle>Connect with me</DrawerTitle>
                         <DrawerDescription></DrawerDescription>
                       </DrawerHeader>
-                      <ul className="flex-grow flex grid-cols-1 gap-2 lg:gap-3 justify-center items-center animated-list animate-in">
+                      <ul className="flex-grow grid grid-cols-1 gap-2 lg:gap-3 animated-list animate-in">
                         {ConnectLinks.map((link) => (
                           <li className="transition-opacity col-span-1" key={link.label}>
                             <Link
                               href={link.href}
-                              className="transition-opacity no-underline content-center	w-auto border border-primary p-4 bg-tertiary inline-grid"
+                              className="transition-opacity no-underline content-center	w-full border border-primary p-4 bg-tertiary inline-grid"
                             >
                               <div className="flex items-center gap-3">
                                 <span className="text-xl">{link.icon}</span>
