@@ -1,7 +1,7 @@
 // lib/utils.ts
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { bodoni, redhatmono, inter, redrose } from "@/fonts"
+import { bodoni, redhatmono, redrose } from "@/fonts"
 
 export function addCommas(x: number | null | undefined): string {
   if (x == null) return ''; // Return an empty string for null or undefined
