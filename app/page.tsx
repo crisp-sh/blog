@@ -78,7 +78,7 @@ export default async function Home() {
               >
                 University of Georgia
               </Link>, studying a range of topics affected by international politics.
-              Cyber security, economics, human rights, and climate change pique my interest the most.
+              Cyber security, infrastructure, and climate change pique my interest the most.
               I hope to address any one of these issues in my future career.
             </p>
           </div>

@@ -4,7 +4,7 @@ import React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import { bodoni, inter, redhatmono, montserrat, redrose, imbue } from "@/fonts"
+import { bodoni, inter, redhatmono, redrose, nunitosans } from "@/fonts"
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navigation from "@/components/Navigation";
@@ -21,19 +21,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       className={`
-        ${montserrat.variable} 
         ${bodoni.variable} 
         ${redhatmono.variable} 
         ${redrose.variable}
-        ${imbue.variable}
       `}
       suppressHydrationWarning
     >
-      <body className={`${inter.className} antialiased bg-primary text-primary`}>
+      <body className={`antialiased bg-primary text-primary`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col min-h-screen items-center">
             <Navigation />
-            <div className="w-full max-w-4xl p-6 md:p-10 max-lg:mt-[64px]">
+            <div className={`${nunitosans.className} w-full max-w-4xl p-6 md:p-10 max-lg:mt-[64px]`}>
               {children}
             </div>
           </div>
