@@ -59,7 +59,7 @@ export default function Navigation() {
             Sellers H. Crisp
           </p>
         </Link>
-        <div className="">
+        <div className="-mr-2">
           <ThemeSwitcher />
         </div>
       </div>
@@ -80,7 +80,7 @@ export default function Navigation() {
                     href={link.href}
                     onClick={() => close()} // Close the popover when a link is clicked
                     className={clsx(
-                      "animate-in text-right text-xl px-4 py-2 hover:text-secondary transition-colors",
+                      "animate-in text-right max-lg:text-xl px-4 py-2 hover:text-secondary transition-colors",
                       pathname === link.href ? "text-secondary" : "font-normal"
                     )}
                     style={{ "--index": link.index } as React.CSSProperties}
@@ -91,7 +91,7 @@ export default function Navigation() {
                 <Drawer>
                   <DrawerTrigger asChild>
                     <p
-                      className="animate-in text-right text-xl px-4 py-2 hover:text-secondary transition-colors cursor-pointer"
+                      className="animate-in text-right max-lg:text-xl px-4 py-2 hover:text-secondary transition-colors cursor-pointer"
                       style={{ "--index": 4 } as React.CSSProperties}
                     >
                       Links
