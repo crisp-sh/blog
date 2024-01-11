@@ -16,3 +16,44 @@ model Post {
   slug      String   @unique
   views     Int      @default(0)
 }
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+model EmailVerificationToken {
+  id        String   @id @default(cuid())
+  userId    String
+  email     String
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+model User {
+  id                      String                   @id @unique @default(cuid())
+  name                    String?
+  email                   String?                  @unique
+  emailVerified           Boolean?                 @default(false)
+  githubId                Int?                     @unique
+  sessions                Session[]
+  guestbook               Guestbook[]
+  emailVerificationTokens EmailVerificationToken[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Guestbook {
+  id        String   @id @default(cuid())
+  userId    String
+  message   String
+  createdAt DateTime @default(now())
+
+  // Relation to User
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, id])
+}
