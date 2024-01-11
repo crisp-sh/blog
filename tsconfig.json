@@ -29,6 +29,7 @@
       "@/components/ui*": ["./components/ui/*"],
       "@/components/layout*": ["./components/layout/*"],
       "@/components/layout/header*": ["./components/layout/header/*"],
+      "@/server/*": ["./server/*"],
       "@/lib/*": ["./lib/*"],
       "@/hooks/*": ["./hooks/*"],
       "@/fonts": ["./app/fonts"],
