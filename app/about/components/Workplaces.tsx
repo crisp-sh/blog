@@ -1,10 +1,11 @@
 "use client";
+
 import Image, { StaticImageData } from "next/image";
+
 import { useTheme } from "next-themes";
 import clsx from "clsx";
 
-import Link from "@/components/ui/Link";
-import { getThemeFont } from "@/lib/utils";
+import Link from "@/components/ui/link";
 
 type Workplace = {
   title: string;

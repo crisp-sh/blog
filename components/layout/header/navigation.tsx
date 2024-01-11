@@ -4,16 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { useTheme } from "next-themes";
-import ThemeSwitcher from "./ThemeSwitcher";
-
-import { inter } from "@/fonts"
+import ThemeSwitcher from "../../ThemeSwitcher";
 
 import { Popover, Transition } from "@headlessui/react";
 import clsx from "clsx";
-import { PlusIcon } from "@radix-ui/react-icons";
+import { ArrowTopRightIcon, PlusIcon } from "@radix-ui/react-icons";
 
 import ConnectLinks from "@/components/ConnectLinks";
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -23,7 +21,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/Drawer"
+} from "@/components/ui/drawer";
 
 const links = [
   { label: "Home", href: "/", index: 1 },
@@ -71,7 +69,7 @@ export default function Navigation() {
               <PlusIcon className="w-5 h-5" fill="currentColor" />
             </Popover.Button>
             <Popover.Panel
-              className="absolute z-[11] top-[64px] right-0 w-[164px] p-4 overflow-hidden origin-top focus:outline-none border text-left border-primary bg-primary max-lg:border-t-0"
+              className="absolute z-[11] top-[64px] right-0 w-[164px] p-4 overflow-hidden origin-top focus:outline-none border text-left border-primary bg-primary border-r-0 max-lg:border-t-0"
             >
               <div className="grid text-lg animate-in">
                 {links.map((link) => (
@@ -98,33 +96,22 @@ export default function Navigation() {
                     </p>
                   </DrawerTrigger>
                   <DrawerContent>
-                    <div className="mx-auto max-w-sm">
+                    <div className="mx-auto">
                       <DrawerHeader>
                         <DrawerTitle>Connect with me</DrawerTitle>
                         <DrawerDescription></DrawerDescription>
                       </DrawerHeader>
-                      <ul className="flex-grow grid grid-cols-1 gap-2 lg:gap-3 animated-list animate-in">
+                      <ul className="flex-grow grid grid-cols-1 gap-2 animated-list min-w-full">
                         {ConnectLinks.map((link) => (
                           <li className="transition-opacity col-span-1" key={link.label}>
                             <Link
                               href={link.href}
-                              className="transition-opacity no-underline content-center	w-full border border-primary p-4 bg-tertiary inline-grid"
+                              className="transition-opacity no-underline w-full border p-4 border-primary inline-grid"
                             >
                               <div className="flex items-center gap-3">
                                 <span className="text-xl">{link.icon}</span>
                                 {link.label}
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 20 20"
-                                  fill="currentColor"
-                                  className="w-5 h-5 ml-auto text-secondary"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                                    clipRule="evenodd"
-                                  />
-                                </svg>
+                                <ArrowTopRightIcon className="w-5 h-5 ml-auto text-secondary" />
                               </div>
                             </Link>
                           </li>

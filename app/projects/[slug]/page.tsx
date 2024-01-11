@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Mdx from "@/app/blog/components/ui/MdxWrapper";
 import PostList from "@/app/blog/components/ui/PostList";
 import Tags from "@/components/Tags";
-import Link from "@/components/ui/Link";
+import Link from "@/components/ui/link";
 import { formatDate } from "lib/formatdate";
 
 type PostProps = {

@@ -1,5 +1,5 @@
 import slugify from "slugify";
-import Link from "./ui/Link";
+import Link from "@/components/ui/link";
 
 type TagsProps = {
   tags: string[];

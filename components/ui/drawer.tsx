@@ -4,6 +4,7 @@ import * as React from "react"
 import { Drawer as DrawerPrimitive } from "vaul"
 
 import { cn } from "@/lib/utils"
+import { Cross1Icon } from "@radix-ui/react-icons"
 
 const Drawer = ({
   shouldScaleBackground = true,
@@ -43,12 +44,17 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed inset-x-0 rounded-t-3xl bottom-0 z-50 mt-24 flex h-auto w-auto flex-col border border-tertiary bg-primary",
+        "fixed inset-x-0 rounded-t-lg bottom-0 z-50 mt-24 flex h-auto w-auto flex-col border border-tertiary bg-primary",
         className
       )}
       {...props}
     >
-      <div className="mx-auto mt-4 h-2 w-[130px] rounded-full bg-tertiary" />
+      <DrawerClose
+        className="absolute top-0 right-0 mr-6 mt-4 text-xl cursor-pointer"
+      >
+        <Cross1Icon className="text-tertiary hover:text-secondary transition-colors"/>
+      </DrawerClose>
+      <div className="mx-auto mt-4 h-2 w-[130px] rounded-full bg-tertiary hover:bg-secondary transition-colors" />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>

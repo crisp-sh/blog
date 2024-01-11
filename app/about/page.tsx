@@ -1,16 +1,9 @@
 import Image from "next/image";
 import { Metadata } from "next";
 
-import Link from "@/components/ui/Link";
+import Link from "@/components/ui/link";
 import Section from "@/components/Section";
-import ConnectLinks from "../../components/ConnectLinks";
-// import Workplaces from "./components/Workplaces";
-// import Gallery from "./components/Gallery";
-
-// import hinesLogo from "public/work/hines-logo.jpeg";
-// import perishipLogo from "public/work/periship-logo.jpeg";
-// import camsLogo from "public/work/cams-logo.png";
-// import uhdLogo from "public/work/uhd.png";
+import ConnectLinks from "@/components/ConnectLinks";
 
 export const metadata: Metadata = {
   title: "About | S.H. Crisp",

@@ -26,6 +26,9 @@
     "paths": {
       "@/*": ["./*"],
       "@/components/*": ["./components/*"],
+      "@/components/ui*": ["./components/ui/*"],
+      "@/components/layout*": ["./components/layout/*"],
+      "@/components/layout/header*": ["./components/layout/header/*"],
       "@/lib/*": ["./lib/*"],
       "@/hooks/*": ["./hooks/*"],
       "@/fonts": ["./app/fonts"],

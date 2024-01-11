@@ -4,7 +4,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { allPosts, Post as PostType } from ".contentlayer/generated";
 
 import Tags from "@/components/Tags";
-import Link from "@/components/ui/Link";
+import Link from "@/components/ui/link";
 import Mdx from "@/app/blog/components/ui/MdxWrapper";
 import ViewCounter from "@/app/blog/components/ui/ViewCounter";
 import PostList from "@/app/blog/components/ui/PostList";

@@ -4,10 +4,11 @@ import React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import { bodoni, inter, redhatmono, redrose, nunitosans } from "@/fonts"
+import { bodoni, redhatmono, redrose, nunitosans } from "@/fonts"
 
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/layout/header/navigation";
+import { Toaster } from "@/components/ui/toaster";
 
 export const dynamic = 'auto';
 
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {children}
             </div>
           </div>
+        <Toaster />
         </ThemeProvider>
         <Analytics />
       </body>
