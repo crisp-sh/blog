@@ -149,6 +149,9 @@ dependencies:
   vaul:
     specifier: ^0.8.0
     version: 0.8.0(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
+  zod:
+    specifier: ^3.22.4
+    version: 3.22.4
 
 devDependencies:
   '@tailwindcss/typography':
