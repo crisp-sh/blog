@@ -1,7 +1,5 @@
-import { PrismaClient } from "@prisma/client";
 import { NextRequest } from "next/server";
-
-const prisma = new PrismaClient();
+import db from "@/lib/db";
 
 export async function GET(req: NextRequest) {
   try {
@@ -16,14 +14,14 @@ export async function GET(req: NextRequest) {
 
     if (process.env.NODE_ENV !== "development") {
       // Increment the view count in production
-      const post = await prisma.post.findUnique({
+      const post = await db.post.findUnique({
         where: {
           slug: slug as string,
         },
       });
 
       if (!post) {
-        const newPost = await prisma.post.create({
+        const newPost = await db.post.create({
           data: {
             slug: slug as string,
             views: 1,
@@ -31,7 +29,7 @@ export async function GET(req: NextRequest) {
         });
         viewCount = newPost.views;
       } else {
-        const updatedPost = await prisma.post.update({
+        const updatedPost = await db.post.update({
           where: {
             id: post.id,
           },
@@ -43,7 +41,7 @@ export async function GET(req: NextRequest) {
       }
     } else {
       // Get view count without incrementing in local environment
-      const post = await prisma.post.findUnique({
+      const post = await db.post.findUnique({
         where: {
           slug: slug as string,
         },
@@ -64,6 +62,6 @@ export async function GET(req: NextRequest) {
     console.error(error);
     return new Response("Internal Server Error", { status: 500 });
   } finally {
-    await prisma.$disconnect();
+    await db.$disconnect();
   }
 }

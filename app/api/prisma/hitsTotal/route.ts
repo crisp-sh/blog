@@ -1,10 +1,9 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import db from "@/lib/db";
 
 export async function GET() {
   try {
     // get total views
-    const total = await prisma.post.aggregate({
+    const total = await db.post.aggregate({
       _sum: {
         views: true,
       },
@@ -15,6 +14,6 @@ export async function GET() {
     console.error(error);
     return new Response("Something went wrong", { status: 200 });
   } finally {
-    await prisma.$disconnect();
+    await db.$disconnect();
   }
 }
