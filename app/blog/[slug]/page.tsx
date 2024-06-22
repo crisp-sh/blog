@@ -50,10 +50,10 @@ export async function generateMetadata(
   const ogImage = `https://b.crisp.sh/${image}`;
 
   const metadata: Metadata = {
-    title: `${title} | S.H. Crisp`,
+    title: `${title} | Sellers H. Crisp`,
     description,
     openGraph: {
-      title: `${title} | S.H. Crisp`,
+      title: `${title} | Sellers H. Crisp`,
       description,
       type: "article",
       publishedTime,
@@ -74,7 +74,7 @@ export async function generateMetadata(
 export default async function Post({ params }: { params: any }) {
   const post = allPosts.find((post) => post.slug === params.slug);
 
-  // const seoTitle = `${post.title} | S.H. Crisp`;
+  // const seoTitle = `${post.title} | Sellers H. Crisp`;
   // const seoDesc = `${post.summary}`;
   // const url = `https://b.crisp.sh/blog/${post.slug}`;
   // const MDXContent = useMDXComponent(post?.body.code);
@@ -109,7 +109,7 @@ export default async function Post({ params }: { params: any }) {
               className="rounded-full bg-secondary"
             />
             <div className="leading-tight">
-              <p className={clsx("font-medium text-primary")}>S.H. Crisp</p>
+              <p className={clsx("font-medium text-primary")}>Sellers H. Crisp</p>
               <p className={clsx("text-secondary")}>
                 <time dateTime={post.publishedAt}>
                   {formatDate(post.publishedAt)}

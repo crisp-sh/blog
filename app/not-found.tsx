@@ -2,7 +2,7 @@ import Link from "@/components/ui/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 | S.H. Crisp",
+  title: "404 | Sellers H. Crisp",
   description:
     "This page does not exist",
 };

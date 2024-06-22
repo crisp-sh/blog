@@ -110,3 +110,5 @@ export function nFormatter(num: number, digits?: number) {
     ? (num / item.value).toFixed(digits || 1).replace(rx, "$1") + item.symbol
     : "0";
 }
+
+export const appUrl = process.env.NEXT_PUBLIC_APP_URL;

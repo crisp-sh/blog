@@ -12,7 +12,7 @@ import EpidemicSound from "public/gear/epidemic-sound.png";
 import DJI from "public/gear/dji.png";
 
 export const metadata: Metadata = {
-  title: "Gear | S.H. Crisp",
+  title: "Gear | Sellers H. Crisp",
   description:
     "My toolbox. This is gear I actually own and recommend.",
 };

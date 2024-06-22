@@ -7,7 +7,7 @@ import { bodoni } from "@/fonts"
 import clsx from "clsx";
 
 export const metadata: Metadata = {
-  title: "Blog | S.H. Crisp",
+  title: "Blog | Sellers H. Crisp",
   description:
     "I write about programming, design, and occasionally life updates!",
 };

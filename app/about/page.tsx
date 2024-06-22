@@ -6,7 +6,7 @@ import Section from "@/components/Section";
 import ConnectLinks from "@/components/ConnectLinks";
 
 export const metadata: Metadata = {
-  title: "About | S.H. Crisp",
+  title: "About | Sellers H. Crisp",
   description:
     "I'm a senior at the University of Georgia, stuying a range of topics affected by international politics.",
 };
