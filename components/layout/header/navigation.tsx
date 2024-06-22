@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { ArrowTopRightIcon, PlusIcon } from "@radix-ui/react-icons";
 
 import ConnectLinks from "@/components/ConnectLinks";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -37,9 +37,7 @@ type MyLinkProps = {
 } & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const MyLink = forwardRef<HTMLAnchorElement, MyLinkProps>(({ href, onClick, ...rest }, ref) => (
-  <Link href={href} ref={ref} onClick={onClick} {...rest}>
-
-  </Link>
+  <Link href={href} ref={ref} onClick={onClick} {...rest}></Link>
 ));
 
 MyLink.displayName = 'MyLink';
@@ -49,11 +47,10 @@ export default function Navigation() {
   const { theme } = useTheme();
 
   return (
-    // lg:top-0 lg:left-0 
-    <aside className="z-[11] animate-in fixed top-0 right-0 flex items-center justify-end bg-primary/100 max-lg:backdrop-blur-lg max-lg:w-full max-lg:border-b max-lg:border-primary ">
+    <aside className="z-[11] animate-in fixed top-0 right-0 flex items-center justify-end bg-primary/100 backdrop-blur-lg w-full border-b border-primary">
       <div className="flex justify-between items-center w-full">
         <Link href="/">
-          <p className={`max-lg:block hidden text-xl text-primary font-theme px-6 tracking-tight`}>
+          <p className="block text-xl text-primary font-theme px-6 tracking-tight">
             Sellers H. Crisp
           </p>
         </Link>
@@ -69,7 +66,7 @@ export default function Navigation() {
               <PlusIcon className="w-5 h-5" fill="currentColor" />
             </Popover.Button>
             <Popover.Panel
-              className="absolute z-[11] top-[64px] right-0 w-[164px] p-4 overflow-hidden origin-top focus:outline-none border text-left border-primary bg-primary border-r-0 max-lg:border-t-0"
+              className="absolute z-[11] top-[64px] right-0 w-[164px] p-4 overflow-hidden origin-top focus:outline-none border text-left border-primary bg-primary border-r-0 border-t-0"
             >
               <div className="grid text-lg animate-in">
                 {links.map((link) => (
@@ -78,7 +75,7 @@ export default function Navigation() {
                     href={link.href}
                     onClick={() => close()} // Close the popover when a link is clicked
                     className={clsx(
-                      "animate-in text-right max-lg:text-xl px-4 py-2 hover:text-secondary transition-colors",
+                      "animate-in text-right text-xl px-4 py-2 hover:text-secondary transition-colors",
                       pathname === link.href ? "text-secondary" : "font-normal"
                     )}
                     style={{ "--index": link.index } as React.CSSProperties}
@@ -89,7 +86,7 @@ export default function Navigation() {
                 <Drawer>
                   <DrawerTrigger asChild>
                     <p
-                      className="animate-in text-right max-lg:text-xl px-4 py-2 hover:text-secondary transition-colors cursor-pointer"
+                      className="animate-in text-right text-xl px-4 py-2 hover:text-secondary transition-colors cursor-pointer"
                       style={{ "--index": 4 } as React.CSSProperties}
                     >
                       Links

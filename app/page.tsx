@@ -79,7 +79,7 @@ export default async function Home() {
               >
                 University of Georgia
               </Link>, studying a range of topics affected by international politics.
-              Cyber security, infrastructure, and climate change pique my interest the most.
+              Security, artificial intelligence, and sustainability pique my interest the most.
               I hope to address any one of these issues in my future career.
             </p>
           </div>
@@ -182,7 +182,7 @@ const education = [
   },
   {
     title: "Auburn University",
-    company: "Biosystems Engineering",
+    company: "Coursework in Biosystems Engineering and Computer Science",
     imageSrc: auburnLogo,
     time: "2019 - 2020",
     bullets: [

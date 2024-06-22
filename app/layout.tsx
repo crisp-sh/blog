@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col min-h-screen items-center">
             <Navigation />
-            <div className={`${nunitosans.className} w-full max-w-4xl p-6 md:p-10 max-lg:mt-[64px]`}>
+            <div className={`${nunitosans.className} w-full max-w-4xl p-6 md:p-10 mt-[64px]`}>
               {children}
             </div>
           </div>

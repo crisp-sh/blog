@@ -151,7 +151,7 @@ export default async function Post({ params }: { params: any }) {
 
       <Tags tags={post.tags} />
 
-      <Subscribe />
+      {/* <Subscribe /> */}
 
       <Link href="/blog">← All Blogs</Link>
       {/* {related.length ? (
