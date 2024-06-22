@@ -1,74 +1,172 @@
 ---
 title: "Cyber Power & Cyber Capability Study"
 time: "2023"
-description: ""
+description: "Does a country's cyber security power and capability influence its willingness to engage in bilateral and multilateral cooperation through formal and informal agreements and norms?"
 url: "https://b.crisp.sh/projects/cyber"
 tags: ["Data Analytics", "Cybersecurity", "R", "Regression", "PCA"]
 ---
-# Research Question
-Does a country’s cyber security power and capability influence its willingness to engage in quality 
-bilateral and multilateral cooperation (BMC) through formal and informal agreements and norms?
-
-# Dataset
-All of the material is based on the open source "national cyber power index" (NCPI) dataset
-released by associates at the Harvard Belfer Center (Voo et al., 2020). Reliability
-and validity often remain issues for macro-political indices, and the NCPI dataset is not an
-exception in this regard. However, the dataset is accompanied with a very detailed and properly-sourced 
-codebook from which the indices have been constructed. Additionally, the NCPI dataset provides the
-individual variables from which the composite "cyber power index" has been constructed.
-
-Thus, two separate dependent variables are used to proxy BMC. The primary variable is the extent and 
-quality of bilateral and multilateral agreements in cyber space. This encompasses formal contracts, 
-such as memberships in both regional and international organizations, as well as informal agreements 
-like joint declarations and cooperation frameworks. This variable is measured on a continuous scale, 
-where higher values signify a greater number and more formal agreements. The secondary variable serves 
-as a proxy for a nation's support of cyber norms. It is evaluated based on eleven criteria, predominantly 
-focusing on a country's involvement in international organizations. These organizations include both 
-“talkshops”, such as the Internet Governance Forum (IGF) and the Global Forum for Cyber Expertise (GFCE), and
-more technical cooperation avenues, such as the International Organization for Standardization (ISO) 
-and the International Electrotechnical Commission (IEC). In addition, national cyber security strategies 
-and related commitments are accounted for in the coding. The range of this variable is scaled to the unit 
-interval.
-
-## Independent Variables
-### Cyber Power
-1. __stateattack__: Number of publicly attributed, notable, and sophisticated state-sponsored cyber attacks.
-2. __attacksurveillance__: Deﬁned analogously to the __stateattack__ variable, but with a surveillance objective.
-3. __attackcontrol__: Like __stateattack__, but with a control objective.
-4. __attackintelligence__: Ibid., but with an intelligence objective.
-5. __attackcommercial__: Ibid., but with a commercial objective.
-6. __attackoffense__: Ibid., but with an offensive objective.
-7. __intentoffense__: A variable with a [0, 1] range; based on seven questions asking whether a country’s cyber military planning, strategy documents, etc. acknowledge the capability for destructive cyber operations, including the destroying or disabling of adversaries’ infrastructures and capabilities.
-
-### Cyber Capability
-1. __militarystrategy__: A national cyber strategy detailing defensive and (or) offensive military capabilities in the cyber space, ranked by consistency of the strategy.
-2. __cybermilpeople__: Number of staff in military cyber forces.
-3. __cybercommand__: The presence of a national, centralized cyber command, ranked by years since establishment.
-
-# Methodology
-Because 
-
 
 <Image
   src="/projects/cyber/poster.png"
-  alt="COVID-19 Dashboard"
+  alt="Biplot Power"
+  width={2580}
+  height={1691}
+/>
+
+# Introduction
+
+The project’s primary purpose is to replicate the study conducted by Ruohonen, which explores the relationship between a country’s cyber security power and capability and how they influence its willingness to engage in bilateral and multilateral cooperation (BMC) through agreements and norms (2020). Based on structural realism, Ruohonen posits three hypotheses: (1) increasing cyber capability reduces the incentives to engage in BMC; (2) demonstrating and using cyber power reduces the incentives to engage in BMC; and (3) small states favor BMC instead of developing cyber security operations (2020).
+
+# Exploratory Data Analyses
+
+## Dataset
+
+The comprehensive Belfer 2020 National Cyber Power Index (NCPI), compiled by Voo et al., provides a complete measure of cyber power than existing indices (e.g., ITU’s Global Cybersecurity Index or the EIU & Booz “cyber power index” in 2011). The objective of the NCPI dataset is to “measure the cyber power of [29] countries against their stated objectives” through 69 indicators. Unlike alternative datasets, the NCPI considers a country’s objectives to be the greatest exhibitor of capability development (Voo et al., 2020).
+
+### Limitations
+
+First, the researchers identified the single greatest inhibitor to their data collection on cyber capabilities as the lack of publicly available data. They concluded the scarcity of certain data points, such as cyber military personnel, was due to it often being considered classified (Voo et al., 2020). Likewise, many countries also intentionally conceal their intentions and capabilities from public knowledge, resulting in some being “vastly under-ranked” in the NCPI (Voo et al., 2020). The researchers suspect DPRK, Israel, and Iran to fall into this category.
+
+## Variables
+
+The main variable of interest, BMC, is a proxy of two dependent variables that measure both formal and informal agreements within the cyber space domain. The first is Agreements, which is continuous in scale, and measures the quality and quantity of formal bilateral and multilateral cooperation agreements in which a state participates. The second is Norms, which is a composite of eleven different criteria that indicate a state’s intent to endorse and follow cyber norms. The researchers note that the Min-Max normalization technique was used due to the absence of a Gaussian distribution among the indicators (Voo et al., 2020). As such, the Norms dependent variable is scaled to the unit interval.
+
+Similarly, independent variables are constructed using two separate composites of indices to help formulate the corresponding hypotheses. The cyber capability hypothesis, denoted by Capability, uses three variables from the NCPI: (1) militarystrategy, the presence of cyber strategies detailing both offensive and defensive military capabilities in cyber space (categorical, ranked 0-4); (2) cybermilpeople, number of military personnel within a cyber forces unit (continuous); and (3) cybercommand, the presence and age of a national cyber command (categorical, ranked 0-4). The cyber power hypothesis, denoted by Power, is a composite of seven objective-oriented variables from the NCPI, including stateattack, attacksurveillance, attackcontrol, attackintelligence, attackcommercial, attackoffense, intentoffense. The composite Power variable is continuous. Lastly, the small states hypothesis is tested by the inclusion of a dummy variable, smallstate, that scores one for Estonia, Lithuania, Singapore, Sweden, and Switzerland (Ruohonen, 2020).
+
+## Principal Component Analysis
+
+Due to the small size of the dataset and wide range of variables used in the initial study, a principal component analysis (PCA) is necessary to address multicollinearity among the independent variables. This statistical technique reduces the dimensionality of the dataset while retaining as much variability as possible. For both the cyber capability and cyber power hypotheses, PCA was performed on the respective sets of indicators, yielding the aforementioned Capability and Power variables. Min-max normalization was applied on both sets of variables, in line with the NCPI’s accompanying study (Voo et al., 2020).
+
+Based on the above Scree Plots, it can be determined that Min-Max scaling is justified as the first principal components account for 82% and 63% of the total variance for both variables respectively. Though, this differs from Ruohonen’s original study. This is because the author did not mention the specific normalization or scaling methods used; however, the variances found in this replication are close enough to the original study (±10%). As such, the Min-Max technique effectively summarized the variance within the multiple indicators into principal components, providing an evenly distributed set of variables for the regression analysis.
+
+# Model and Interpretation
+
+## Ordinary Least Squares (OLS) Regression
+
+After a thorough principal component analysis (PCA), two ordinary least square (OLS) models are used to assess the linear relation by the composite BMC variables:
+
+Agreements = β0 + β1 × Capability + β2 × Power + β3 × Small State + ϵ
+
+Norms = β0 + β1 × Capability + β2 × Power + β3 × Small State + ϵ
+
+Upon constructing both models in R, the regression results were obtained and can be seen in Table 1. In the Agreements model, Capability shows a negative coefficient and is not statistically significant. Additionally, Norms has a significant negative effect (-0.246), suggesting that as cyber capabilities increase, the endorsement of cyber norms decreases. However, because of the negative result, this postulation is not true, rather a “non-result” (Ruohonen, 2020). Power does not show a statistically significant effect in either model, indicating no clear evidence of its impact on both Agreements and Norms. With respect to model fit, the R-squared values indicate that the model for Norms (R² = 0.425) explains a larger proportion of the variance than the model for Agreements (R² = 0.040). The Adjusted R-squared values further reinforce the relatively stronger explanatory power of the Norms model.
+
+## Model Diagnostic
+
+For each of the models, Variance Inflation Factor (VIF) scores, Quantile-Quantile plot (Q-Q plot), and Residuals versus Fits plot were calculated and generated, as seen in the figures below. The VIF scores (Capability ≃ 1.18; Power ≃ 1.19; Small State ≃ 1.05) indicate no multicollinearity issues, which affirms the reliability of the models. Additionally, the residuals versus fits plot for both models are used to detect non-linearity, unequal error variances, and outliers. As suggested in the figures below, both models are linear and display rather equal error variances; however, outliers have affected both. India and the United States, the outliers, stand out in terms of BMC. According to Ruohonen, this result is “hardly unexpected” (2020). The Q-Q plots show that linearity is likely an issue with the Agreements model, which is mostly due to the outliers and lack of a large dataset.
+
+# Interpretation/Conclusion
+
+The results in this replication did not differ from Ruohonen’s initial study. The cyber capability hypothesis is plausible; however, the statistical evidence is not convincing enough. Similar to Ruohonen’s findings, outright rejection of the cyber power and small state hypotheses is suitable due to their negative results (2020). However, Ruohonen, and other scholars alike, essentially posit that it is impossible for there not to be incentives for BMC, which is a perfect conclusion. Whether there is an issue with the dataset or the formulation of the hypotheses, the original author suggests the statistical evidence falls somewhere between “no evidence of effect” and effect “too small to be worthwhile pursuing” (Ruohonen, 2020).
+
+# References
+
+Ruohonen, Jukka. “Do Cyber Capabilities and Cyber Power Incentivize International Cooperation?” arXiv preprint, November 14, 2020. https://doi.org/10.48550/arXiv.2011.07212.
+
+Voo, Julia; Irfan Hemani; Simon Jones; Winnona DeSombre; Daniel Cassidy; and Anina Schwarzenbach (2020). National Cyber Power Index 2020. Methodology and Analytical Considerations. China Cyber Power Initiative. Report, Harvard Kennedy School’s Belfer Center for Science and International Affairs. https://doi.org/10.48550/arXiv.2011.07212
+
+<section className="flex gap-2 relative">
+        <Image
+          src="/projects/cyber/0-scree plot capability.png"
+          alt="Scree Plot Capability"
+          width={1000}
+          height={1000}
+        />
+        <Image
+          src="/projects/cyber/0-scree plot power.png"
+          alt="Scree Plot Power"
+          width={1000}
+          height={1000}
+        />
+</section>
+
+<Image
+  src="/projects/cyber/0-biplot power.png"
+  alt="Biplot Power"
   width={2580}
   height={1691}
 />
 
 <Image
-  src="/projects/covid/phones.png"
-  alt="COVID-19 Dashboard"
-  width={1905}
-  height={1409}
-  caption="Mobile view of application, including list of key statistics, the map of daily growth, and the fully interactive map made using Mapbox."
+  src="/projects/cyber/0-scree plot capability.png"
+  alt="Scree Plot Capability"
+  width={2580}
+  height={1691}
 />
 
 <Image
-  src="/projects/covid/tablet.png"
-  alt="COVID-19 Dashboard"
+  src="/projects/cyber/0-scree plot power.png"
+  alt="Scree Plot Power"
   width={2580}
   height={1691}
-  caption="Tablet view of the dashboard's home page. The application is designed to be responsive to all platforms and devices."
 />
 
+<Image
+  src="/projects/cyber/2 BMC Variables.png"
+  alt="BMC Variables"
+  width={2580}
+  height={1691}
+/>
+
+<Image
+  src="/projects/cyber/Agreements vs Norms Regression.png"
+  alt="Agreements vs Norms Regression"
+  width={2580}
+  height={1691}
+/>
+
+<Image
+  src="/projects/cyber/biplot capability.png"
+  alt="Biplot Capability"
+  width={2580}
+  height={1691}
+/>
+
+<Image
+  src="/projects/cyber/biplot power.png"
+  alt="Biplot Power"
+  width={2580}
+  height={1691}
+/>
+
+<Image
+  src="/projects/cyber/QQ plot Agreements.png"
+  alt="QQ Plot Agreements"
+  width={2580}
+  height={1691}
+/>
+
+<Image
+  src="/projects/cyber/QQ Plot Norms.png"
+  alt="QQ Plot Norms"
+  width={2580}
+  height={1691}
+/>
+
+<Image
+  src="/projects/cyber/Residuals vs fits agreements.png"
+  alt="Residuals vs Fits Agreements"
+  width={2580}
+  height={1691}
+/>
+
+<Image
+  src="/projects/cyber/residuals vs fits norms.png"
+  alt="Residuals vs Fits Norms"
+  width={2580}
+  height={1691}
+/>
+
+<Image
+  src="/projects/cyber/scree plot power.png"
+  alt="Scree Plot Power"
+  width={2580}
+  height={1691}
+/>
+
+<Image
+  src="/projects/cyber/scree-plot capability.png"
+  alt="Scree-Plot Capability"
+  width={2580}
+  height={1691}
+/>
