@@ -173,9 +173,6 @@ dependencies:
   vaul:
     specifier: ^0.8.0
     version: 0.8.0(@types/react-dom@18.2.15)(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)
-  zod:
-    specifier: link:@hookform/resolvers/zod
-    version: link:@hookform/resolvers/zod
 
 devDependencies:
   '@tailwindcss/typography':
@@ -226,6 +223,9 @@ devDependencies:
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
+  zod:
+    specifier: link:@hookform/resolvers/zod
+    version: link:@hookform/resolvers/zod
 
 packages:
 
