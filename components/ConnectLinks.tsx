@@ -1,4 +1,4 @@
-import { EnvelopeClosedIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import { EnvelopeClosedIcon, GitHubLogoIcon, LinkedInLogoIcon, FileTextIcon } from "@radix-ui/react-icons";
 
 interface ConnectLink {
   label: string;
@@ -21,6 +21,11 @@ const ConnectLinks: ConnectLink[] = [
     label: "GitHub",
     href: "https://github.com/sellerscrisp",
     icon: <GitHubLogoIcon />,
+  },
+  {
+    label: "Resume",
+    href: "/resume",
+    icon: <FileTextIcon />,
   },
 ];
 
